@@ -1,0 +1,12 @@
+[Unit]
+Description=Simple X Hotkey Daemon
+Documentation=man:sxhkd(1)
+Requires=wm.target
+
+[Service]
+ExecStart=/usr/bin/sxhkd -m 1
+ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
+TimeoutStopSec=3s
+
+[Install]
+WantedBy=wm.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=XDG autostart
+Requires=wm.target
+
+[Service]
+ExecStart=/usr/bin/dex -a
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=wm.target

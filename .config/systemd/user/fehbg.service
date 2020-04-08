@@ -1,0 +1,9 @@
+[Unit]
+Description=Restore background
+Requires=wm.target
+
+[Service]
+ExecStart=/home/jamie/.fehbg
+
+[Install]
+WantedBy=wm.target

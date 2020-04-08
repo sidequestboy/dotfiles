@@ -1,0 +1,11 @@
+[Unit]
+Description=Xorg compositor
+Documentation=man:picom(1)
+Requires=wm.target
+
+[Service]
+ExecStart=/usr/bin/picom
+
+[Install]
+WantedBy=wm.target
+

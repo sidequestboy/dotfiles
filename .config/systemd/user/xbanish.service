@@ -1,0 +1,9 @@
+[Unit]
+Description=Hide cursor when key is pressed
+Requires=wm.target
+
+[Service]
+ExecStart=/usr/bin/xbanish
+
+[Install]
+WantedBy=wm.target
