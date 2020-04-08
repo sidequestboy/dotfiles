@@ -74,6 +74,11 @@ function chpwd() {
     ls
 }
 
+# speed up autocomplete when in git repos
+__git_files () {
+    _wanted files expl 'local files' _files
+}
+
 # plugins
 # check if zplug is installed
 if [[ ! -d "$ZPLUG_HOME" ]]; then
