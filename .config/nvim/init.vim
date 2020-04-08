@@ -38,7 +38,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'neomake/neomake'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
@@ -49,7 +48,6 @@ let maplocalleader=' '
 
 set mouse=a
 set nohls
-"set clipboard+=unnamedplus
 set number
 set splitbelow
 set splitright
@@ -57,10 +55,8 @@ set splitright
 set ts=4
 set sw=4
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
-set tags+=~/.tags-usr
 
 let g:auto_save = 1
-"let g:auto_save_events = ["TextChanged"]
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -75,7 +71,6 @@ nnoremap <silent> <A-l> :TmuxResizeRight<CR>
 hi vertsplit cterm=NONE ctermfg=black
 hi statusline cterm=bold
 hi statuslinenc cterm=NONE
-"set fillchars+=vert:\ 
 
 tmap <C-l> <C-\><C-n><C-l>
 tmap <C-h> <C-\><C-n><C-h>
