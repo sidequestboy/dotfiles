@@ -72,11 +72,6 @@ alias ssh='TERM=xterm ssh'
 function chpwd() {
     emulate -L zsh
     ls
-#    if [ -n $(git remote -v | rg 'jameh/dotfiles') ]; then
-#        export PURE_GIT_UNTRACKED_DIRTY=0
-#    else
-#        export PURE_GIT_UNTRACKED_DIRTY=1
-#    fi
 }
 
 # plugins
