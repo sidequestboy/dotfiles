@@ -1,0 +1,10 @@
+session_name: news
+windows:
+- focus: 'true'
+  layout: 61f3,144x36,0,0,33
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: newsboat
+  start_directory: /home/jamie
+  window_name: newsboat

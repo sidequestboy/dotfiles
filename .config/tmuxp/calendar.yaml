@@ -1,0 +1,10 @@
+session_name: calendar
+windows:
+- focus: 'true'
+  layout: bf80,144x35,0,0,3
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: calcurse
+  start_directory: /home/jamie
+  window_name: calcurse

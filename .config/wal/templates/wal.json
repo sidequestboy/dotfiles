@@ -1,0 +1,15 @@
+{{
+	"name": "Wal",
+	"author": "jamie",
+	"title": {{ "fg": "{foreground}" }},
+	"chart": {{ "fg": "{foreground}", "border": {{ "type": "line", "fg": "{foreground}" }} }},
+	"table": {{
+		"fg": "{foreground}",
+		"items": {{
+			"selected": {{ "bg": "{color2}", "fg": "{color0}" }},
+			"item": {{ "fg": "{foreground}" }}
+		}},
+		"border": {{ "type": "line", "fg": "{color3}" }}
+	}},
+	"footer": {{ "fg": "{color3}" }}
+}}

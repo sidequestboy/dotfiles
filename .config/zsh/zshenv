@@ -1,0 +1,3 @@
+export ZDOTDIR=/home/jamie/.config/zsh
+source <(sed '/^ *$/d; /^#.*/d; s/^/export /' ${HOME}/.config/environment.d/00-xdg-base-dirs.conf)
+source <(sed '/^ *$/d; /^#.*/d; s/^/export /' ${XDG_CONFIG_HOME}/environment.d/10-xdg-base-dirs.conf)

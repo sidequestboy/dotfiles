@@ -1,0 +1,17 @@
+session_name: code
+windows:
+- focus: 'true'
+  layout: 1956,205x59,0,0{102x59,0,0,2,102x59,103,0,8}
+  options: {}
+  panes:
+  - nvim
+  - pane
+  start_directory: /home/jamie/Dropbox/md
+  window_name: python
+- layout: d324,205x59,0,0,7
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: python3
+  start_directory: /home/jamie/Dropbox/md
+  window_name: python3

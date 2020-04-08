@@ -1,0 +1,13 @@
+[Default Applications]
+application/zip=userapp-unzip-YURCH0.desktop
+inode/directory=ranger.desktop
+text/html=chromium.desktop
+x-scheme-handler/http=chromium.desktop
+x-scheme-handler/https=chromium.desktop
+x-scheme-handler/about=chromium.desktop
+x-scheme-handler/unknown=chromium.desktop
+
+[Removed Associations]
+
+[Added Associations]
+application/zip=userapp-unzip-YURCH0.desktop;userapp-unzip -d-KNYDH0.desktop;

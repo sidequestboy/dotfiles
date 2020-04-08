@@ -1,0 +1,17 @@
+session_name: chat
+windows:
+- window_name: irc
+  focus: 'true'
+  panes:
+  - shell_command: weechat
+  start_directory: /home/jamie
+
+- window_name: facebook
+  panes:
+  - shell_command: weechat -d ~/.weechat-fb
+  start_directory: /home/jamie
+  
+- window_name: slack
+  panes:
+  - shell_command: weechat -d ~/.weechat-slack
+  start_directory: /home/jamie

@@ -1,0 +1,9 @@
+session_name: dropdown
+windows:
+- focus: 'true'
+  layout: 5484,90x31,0,0,15
+  options: {}
+  panes:
+  - pane
+  start_directory: /home/jamie
+  window_name: python

@@ -1,0 +1,10 @@
+session_name: bluetooth
+windows:
+- focus: 'true'
+  layout: dff0,144x35,0,0,21
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: bluetoothctl
+  start_directory: /home/jamie
+  window_name: bluetoothctl
