@@ -54,7 +54,9 @@ set splitright
 
 set ts=4
 set sw=4
+set expandtab
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set list
 
 let g:auto_save = 1
 
