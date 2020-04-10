@@ -5,7 +5,7 @@ Documentation=man:tmux(1)
 [Service]
 Type=forking
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/tmux new-session -d
+ExecStart=/usr/bin/tmux new-session -d -f /home/jamie/.config/tmux/tmux.conf
 
 ExecStop=/home/jamie/.tmux/plugins/tmux-resurrect/scripts/save.sh
 ExecStop=/usr/bin/tmux kill-server
