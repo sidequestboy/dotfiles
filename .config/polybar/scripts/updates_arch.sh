@@ -33,5 +33,5 @@ do
     else
         echo -e "  No Updates"
     fi
-    sleep 300
+    sleep 6000
 done
