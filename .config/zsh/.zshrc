@@ -38,16 +38,24 @@ export KANBANFILE='~/.kanban.csv'
 
 eval "$(tmuxifier init -)"
 
+setopt auto_cd
+
 # aliases
 # default options
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
-alias ls="sed 's/^/-I \"/; s/$/\"/' .hidden 2>/dev/null | tr '\n' ' ' | xargs ls --color=auto"
-alias lsa="command ls -a --color=auto"
+alias ls="sed 's/^/-I \"/; s/$/\"/' .hidden 2>/dev/null | tr '\n' ' ' | xargs ls --color=auto -CF"
+alias l="ls"
+alias la="ls -ACF"
+alias ll="ls -AlF"
+alias lsa="command ls -A --color=auto"
 #alias man='man -Helinks'
 alias vtop='vtop --theme wal'
 alias scrot_full="scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/pics/screenshots'"
 alias cp="rsync -avzz --progress"
 alias startx="startx $XDG_CONFIG_HOME/X11/xinitrc"
+alias mv="mv -i"
+alias rm="rm -i"
+alias gs="git status"
 
 # program shortcuts
 alias r="ranger"
