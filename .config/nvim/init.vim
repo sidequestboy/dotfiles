@@ -19,6 +19,7 @@ Plug 'glacambre/firenvim', {
   \ 'branch': 'fix_493',
   \ 'do': 'npm install && npm run build && npm run install_manifests' }
 Plug 'farmergreg/vim-lastplace'
+Plug 'justinmk/vim-sneak'
 
 "eye candy
 Plug 'vim-airline/vim-airline'
@@ -43,7 +44,7 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 call plug#end()
 
-let mapleader=','
+let mapleader='-'
 let maplocalleader=' '
 
 set mouse=a
