@@ -43,10 +43,10 @@ setopt auto_cd
 # aliases
 # default options
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
-alias ls="sed 's/^/-I \"/; s/$/\"/' .hidden 2>/dev/null | tr '\n' ' ' | xargs ls --color=auto -CF"
+alias ls="sed 's/^/-I \"/; s/$/\"/' .hidden 2>/dev/null | tr '\n' ' ' | xargs ls --color=auto -CF --group-directories-first"
 alias l="ls"
-alias la="ls -ACF"
-alias ll="ls -AlF"
+alias la="ls -A"
+alias ll="ls -Al"
 alias lsa="command ls -A --color=auto"
 #alias man='man -Helinks'
 alias vtop='vtop --theme wal'
