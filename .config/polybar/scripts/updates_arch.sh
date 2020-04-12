@@ -1,37 +1,20 @@
 #!/bin/sh
 
-cachedir="$XDG_CACHE_HOME/polybar"
-! [ -d "$cachedir" ] && mkdir -p "$cachedir"
+echo "  ?, ?"
 
-while :
-do
-    list_updates=$(checkupdates 2> /dev/null)
-    if [ "$?" -ne 0 ]; then
-        # no connection - read from cache
-        cat "$cachedir/updates_arch" 2> /dev/null
-        if [ "$?" -eq 0 ]; then
-            sleep 5
-            exit 0
-        else
-            # no cache - exit
-            echo " ?, ?" && sleep 5 && exit 1
-        fi
-    fi
+_checkupdates() {
+    echo " $(pacman -Qu | wc -l), $(yay -Qum | wc -l)"
+}
 
-    if ! updates_arch=$(echo "$list_updates" | wc -l ); then
-        updates_arch=0
-    fi
+trap _checkupdates SIGUSR1
+_checkupdates
 
-    if ! updates_aur=$(yay -Qum 2> /dev/null | wc -l); then
-        updates_aur=0
-    fi
-
-    updates=$(("$updates_arch" + "$updates_aur"))
-    if [ "$updates" -gt 0 ]; then
-        echo -e "  $updates_arch, $updates_aur"
-        echo -e "  $updates_arch, $updates_aur" > "$cachedir/updates_arch"
-    else
-        echo -e "  No Updates"
-    fi
-    sleep 6000
+inotifywait -e close_write,moved_to,create -q -m --exclude '.*\.part' \
+            --format %e /var/lib/pacman/sync |
+while read -r event; do
+    while pgrep pacman 2> /dev/null; do
+        sleep 1
+    done
+    _checkupdates
 done
+
