@@ -30,7 +30,7 @@ mod3 + Return
 mod3 + mod1 + Return
 	alacritty -e tmux attach
 mod3 + mod1 + BackSpace
-	"$HOME/.local/lib/dwm/lock.sh"
+	"$HOME/.local/bin/lock.sh"
 
 # make sxhkd reload its configuration files:
 mod3 + Escape
