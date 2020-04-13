@@ -15,7 +15,6 @@ bspc rule -a "Show-splash-gtk" desktop='^7' state=floating
 bspc rule -a "Bitwig Studio" desktop='^7'
 bspc rule -a "Spotify" desktop='^5'
 
-
 xsetroot -cursor_name left_ptr &
 
 
