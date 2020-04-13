@@ -20,6 +20,7 @@ Plug 'glacambre/firenvim', {
   \ 'do': 'npm install && npm run build && npm run install_manifests' }
 Plug 'farmergreg/vim-lastplace'
 Plug 'justinmk/vim-sneak'
+Plug 'jpalardy/vim-slime'
 
 "eye candy
 Plug 'vim-airline/vim-airline'
@@ -65,6 +66,10 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 
 let g:tmux_resizer_no_mappings = 1
+
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$XDG_CONFIG_HOME/slime_paste"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
 
 nnoremap <silent> <A-h> :TmuxResizeLeft<CR>
 nnoremap <silent> <A-j> :TmuxResizeDown<CR>
