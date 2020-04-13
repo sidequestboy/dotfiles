@@ -36,8 +36,6 @@ export PATH=~/.local/bin:$PATH
 
 export KANBANFILE='~/.kanban.csv'
 
-eval "$(tmuxifier init -)"
-
 setopt auto_cd
 
 # aliases
@@ -62,7 +60,6 @@ alias r="ranger"
 alias e="$EDITOR"
 alias chat="weechat"
 alias prm=". $HOME/.local/bin/prm.sh"
-alias tm="tmuxifier"
 
 # systemd
 alias ss="sudo systemctl"
