@@ -6,11 +6,11 @@ XF86MonBrightnessUp
 
 # Audio
 XF86AudioRaiseVolume
-	sh -c "pulsemixer --unmute ; pulsemixer --change-volume +5 --max-volume 100"
+	pulsemixer --unmute ; pulsemixer --change-volume +5 --max-volume 100
 mod1 + XF86AudioRaiseVolume
-	sh -c "pulsemixer --unmute ; pulsemixer --change-volume +5"
+	pulsemixer --unmute ; pulsemixer --change-volume +5
 XF86AudioLowerVolume
-	sh -c "pulsemixer --unmute ; pulsemixer --change-volume -5"
+	pulsemixer --unmute ; pulsemixer --change-volume -5
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 XF86AudioMicMute
@@ -31,6 +31,9 @@ mod3 + mod1 + Return
 	alacritty -e tmux attach
 mod3 + mod1 + BackSpace
 	"$HOME/.local/bin/lock.sh"
+
+{_,@}Print
+	scrot -s
 
 # make sxhkd reload its configuration files:
 mod3 + Escape
@@ -62,11 +65,11 @@ mod3 + {_,mod1 + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-mod3 + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+mod3 + {comma,period}
+	bspc node -f @{parent,brother}
 
 # focus the next/previous node in the current desktop
-mod3 + {_,mod1 + }n
+mod3 + {n,p}
 	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
