@@ -32,7 +32,7 @@ setopt share_history
 
 export BROWSER='chromium'
 export EDITOR='nvim'
-export PATH=~/.config/tmuxifier/bin:~/git/doom-emacs/bin:~/.local/bin:$PATH
+export PATH=~/.local/bin:$PATH
 
 export KANBANFILE='~/.kanban.csv'
 
