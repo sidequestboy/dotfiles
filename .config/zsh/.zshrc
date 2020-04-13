@@ -103,6 +103,7 @@ zplug "wfxr/forgit", defer:1
 #zplug "themes/robbyrussell", from:oh-my-zsh, as:theme
 zplug "mafredri/zsh-async", from:github
 zplug "jameh/pure", use:pure.zsh, from:github, as:theme
+zplug "plugins/git", from:oh-my-zsh
 
 zstyle :prompt:pure:git:stash show yes
 
