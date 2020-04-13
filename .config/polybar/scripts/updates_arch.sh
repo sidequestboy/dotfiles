@@ -12,7 +12,7 @@ _printupdates() {
 }
 
 _checkpacman() {
-    _pacman_updates=$(pacman -Qu 2> /dev/null | wc -l)
+    _pacman_updates=$(checkupdates -Qu 2> /dev/null | wc -l)
     [ $? -eq 0 ] && echo "$_pacman_updates" > "$TMP_DIR/pacman"
 }
 
