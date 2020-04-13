@@ -1,0 +1,21 @@
+#!/bin/env python3
+
+import sys
+from yeelight import Bulb
+bulb = Bulb("192.168.1.47")
+
+if (sys.argv[1] == "red"):
+    bulb.set_rgb(255,0,0)
+elif (sys.argv[1] == "blue"):
+    bulb.set_rgb(0,0,255)
+elif (sys.argv[1] == "soft"):
+    bulb.set_color_temp(1000)
+elif (sys.argv[1] == "bright"):
+    bulb.set_color_temp(4000)
+elif (sys.argv[1] == "off"):
+    bulb.turn_off()
+elif (sys.argv[1] == "on"):
+    bulb.turn_on()
+elif (sys.argv[1] == "toggle"):
+    bulb.toggle()
+
