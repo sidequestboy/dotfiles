@@ -28,6 +28,8 @@ export FZF_ALT_C_OPTS="--select-1 --exit-0 --preview 'tree -C {} | head -200'"
 # locale
 export LC_CTYPE="en_US.UTF-8"
 
+export LESS='--mouse'
+
 # share history between terminals
 setopt share_history
 
