@@ -1,6 +1,13 @@
 #!/bin/sh
 
-bspc monitor -d 1 2 3 4 5 6 7
+export MONITOR=$(polybar -m|tail -1|sed -e 's/:.*$//g')
+if [ "$MONITOR" -ne eDP1 ]; then
+    xrandr --output "$MONITOR" --auto --output eDP1 --off
+fi
+
+# Start workspaces on the main monitor.
+bspc monitor "$MONITOR" -d 1 2 3 4 5 6 7
+bspc desktop -f 1
 
 bspc config border_width         5
 bspc config window_gap         20
