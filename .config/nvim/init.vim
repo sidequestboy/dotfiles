@@ -59,6 +59,8 @@ set sw=4
 set expandtab
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set list
+set undofile
+set undodir=/home/jamie/nvim/undo
 
 let g:auto_save = 1
 
