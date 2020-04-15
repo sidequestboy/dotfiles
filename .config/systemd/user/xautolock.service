@@ -3,7 +3,7 @@ Description=Automatic screen locker
 Requires=wm.target
 
 [Service]
-ExecStart=/usr/bin/xidlehook --not-when-audio --timer 600 /home/jamie/.local/lib/dwm/lock.sh ''
+ExecStart=/usr/bin/xidlehook --not-when-audio --timer 300 %h/.local/bin/lock.sh ''
 Restart=always
 
 [Install]
