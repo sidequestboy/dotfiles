@@ -26,9 +26,9 @@ XF86AudioPlay
 mod3 + space
 	"$XDG_CONFIG_HOME/rofi/launcher.sh"
 mod3 + Return
-	alacritty -e tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf
+	alacritty -e tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" new
 mod3 + mod1 + Return
-	alacritty -e tmux attach
+	alacritty -e tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" attach
 mod3 + mod1 + BackSpace
 	"$HOME/.local/bin/lock.sh"
 
