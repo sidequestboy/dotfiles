@@ -1,6 +1,6 @@
 # set up command history
-HISTSIZE=10000
-SAVEHIST=10000
+# HISTSIZE=10000
+# SAVEHIST=10000
 
 # enable autocomplete
 autoload -Uz compinit; compinit
@@ -33,6 +33,7 @@ export KANBANFILE='~/.kanban.csv'
 setopt auto_cd
 
 # aliases
+alias sudo='sudo '
 # default options
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias ls="sed 's/^/-I \"/; s/$/\"/' .hidden 2>/dev/null | tr '\n' ' ' | xargs ls --color=auto -CF --group-directories-first"
@@ -45,8 +46,6 @@ alias vtop='vtop --theme wal'
 alias scrot_full="scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/pics/screenshots'"
 alias cp="rsync -avzz --progress"
 alias startx="startx $XDG_CONFIG_HOME/X11/xinitrc"
-alias mv="mv -i"
-alias rm="rm -i"
 alias gs="git status"
 
 # program shortcuts
@@ -95,6 +94,7 @@ zplug "wfxr/forgit", defer:1
 zplug "mafredri/zsh-async", from:github
 zplug "jameh/pure", use:pure.zsh, from:github, as:theme
 zplug "plugins/git", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
 
 zstyle :prompt:pure:git:stash show yes
 

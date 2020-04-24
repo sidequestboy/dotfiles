@@ -16,11 +16,13 @@ Plug '907th/vim-auto-save'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chemzqm/denite-extra'
 Plug 'glacambre/firenvim', {
-  \ 'branch': 'fix_493',
+  \ 'branch': 'master',
   \ 'do': 'npm install && npm run build && npm run install_manifests' }
 Plug 'farmergreg/vim-lastplace'
 Plug 'justinmk/vim-sneak'
 Plug 'jpalardy/vim-slime'
+Plug 'lambdalisue/suda.vim'
+Plug 'ap/vim-css-color'
 
 "eye candy
 Plug 'vim-airline/vim-airline'
@@ -60,7 +62,7 @@ set expandtab
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set list
 set undofile
-set undodir=/home/jamie/nvim/undo
+set undodir=$XDG_CONFIG_HOME/nvim/undo
 
 let g:auto_save = 1
 
@@ -78,6 +80,7 @@ nnoremap <silent> <A-j> :TmuxResizeDown<CR>
 nnoremap <silent> <A-k> :TmuxResizeUp<CR>
 nnoremap <silent> <A-l> :TmuxResizeRight<CR>
 
+hi folded ctermbg=NONE
 hi vertsplit cterm=NONE ctermfg=black
 hi statusline cterm=bold
 hi statuslinenc cterm=NONE

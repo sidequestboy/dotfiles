@@ -1,13 +1,23 @@
+# SXHKD CONFIG
+
+# SXHKD KEYS {{{1
+
+# reload sxhkd
+mod3 + Escape
+	pkill -USR1 -x sxhkd
+
+# MEDIA KEYS {{{1
+
 # Brightness
 XF86MonBrightnessDown
 	brightnessctl -e -d intel_backlight set '5%-'
 XF86MonBrightnessUp
 	brightnessctl -e -d intel_backlight set '+5%'
 
-# Audio
+# Volume
 XF86AudioRaiseVolume
 	pulsemixer --unmute ; pulsemixer --change-volume +5 --max-volume 100
-mod1 + XF86AudioRaiseVolume
+alt + XF86AudioRaiseVolume
 	pulsemixer --unmute ; pulsemixer --change-volume +5
 XF86AudioLowerVolume
 	pulsemixer --unmute ; pulsemixer --change-volume -5
@@ -15,6 +25,8 @@ XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 XF86AudioMicMute
 	pactl set-source-mute @DEFAULT_SINK@ toggle
+
+# Spotify
 XF86AudioNext
 	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 XF86AudioPrev
@@ -22,24 +34,25 @@ XF86AudioPrev
 XF86AudioPlay
 	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
-# Application Launching
+# APPS {{{1
+
+# rofi
 mod3 + space
 	"$XDG_CONFIG_HOME/rofi/launcher.sh"
+
+# terminal / tmux
 mod3 + Return
 	alacritty -e tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" new
-mod3 + mod1 + Return
+mod3 + alt + Return
 	alacritty -e tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" attach
-mod3 + mod1 + BackSpace
+mod3 + alt + BackSpace
 	"$HOME/.local/bin/lock.sh"
 
+# screenshot
 {_,@}Print
-	scrot -s
+	scrot{ ,-s}
 
-# make sxhkd reload its configuration files:
-mod3 + Escape
-	pkill -USR1 -x sxhkd
-
-# BSPWM
+# BSPWM {{{1
 # quit/restart bspwm
 mod3 + alt + {q,r}
 	bspc {quit,wm -r}
@@ -48,20 +61,23 @@ mod3 + alt + {q,r}
 mod3 + {_,shift + }BackSpace
 	bspc node -{c,k}
 
+mod3 + apostrophe
+	bspc node -c
+
 # alternate between the tiled and monocle layout
 mod3 + m
 	bspc desktop -l next
 
 # set the window state
-mod3 + {t,mod1 + t,s,f}
+mod3 + {t,alt + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-mod3 + mod1 + {m,x,y,z}
+mod3 + alt + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
 # focus/swap the node in the given direction
-mod3 + {_,mod1 + }{h,j,k,l}
+mod3 + {_,alt + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
@@ -77,12 +93,28 @@ mod3 + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-mod1 + {grave,Tab}
+alt + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus or send to the given desktop
-mod3 + {_,mod1 + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+mod3 + {_,alt + }{1-9,0}
+	bspc {desktop -f,node -d} 'focused:^{1-9,10}'
+
+mod3 + alt + grave
+	bspc node -m any.!focused --follow
+
+# focus or send to the given desktop
+#mod3 + ctrl + {_,alt + }{1-9,0}
+#	bspc {desktop -f,node -d} 'HDMI1:^{1-9,10}'
+
+mod3 + grave
+	bspc monitor -f any.!focused
+
+# mod4 + 1
+# 	bspc monitor -f HDMI1
+# 
+# mod4 + 2
+# 	bspc monitor -f eDP1
 
 # preselect the direction
 mod3 + ctrl + {h,j,k,l}
@@ -105,18 +137,18 @@ mod3 + ctrl + shift + space
 #
 
 # expand a window by moving one of its side outward
-mod4 + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+#alt + {h,j,k,l}
+#	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-mod4 + mod3 + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+#mod4 + {h,j,k,l}
+#	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
-mod3 + {Left,Down,Up,Right}
+alt + mod4 + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# DWM-specific calls
+# DWM-specific calls {{{1
 # TODO: add dwmc patch
 #mod3 + l
 #	xsetroot -name "fsignal:focusstack-next"
@@ -134,9 +166,9 @@ mod3 + {Left,Down,Up,Right}
 #	xsetroot -name "fsignal:killclient"
 #mod3 + r
 #	xsetroot -name "fsignal:rotate-down"
-#mod3 + mod1 + r
+#mod3 + alt + r
 #	xsetroot -name "fsignal:rotate-up"
-#mod3 + mod1 + q
+#mod3 + alt + q
 #	$HOME/.local/bin/stopx
 #mod3 + minus
 #	xsetroot -name "fsignal:gaps-dec"
@@ -152,7 +184,7 @@ mod3 + {Left,Down,Up,Right}
 #	xsetroot -name "fsignal:layout-monocle"
 #mod3 + c
 #	xsetroot -name "fsignal:layout-cmaster"
-#mod3 + mod1 + c
+#mod3 + alt + c
 #	xsetroot -name "fsignal:layout-cfmaster"
 #mod3 + k
 #	xsetroot -name "fsignal:mfact-inc"
@@ -166,3 +198,6 @@ mod3 + {Left,Down,Up,Right}
 #	xsetroot -name "fsignal:togglescratch"
 #mod3 + z
 #	xsetroot -name "fsignal:zoom"
+# }}}
+
+# vim: set noexpandtab foldmethod=marker:

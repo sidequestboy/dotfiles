@@ -1,9 +1,0 @@
-[Unit]
-Description=X11 status bar
-Requires=wm.target
-
-[Service]
-ExecStart=/usr/bin/polybar mybar -c %h/.config/polybar/config.ini
-
-[Install]
-WantedBy=wm.target
