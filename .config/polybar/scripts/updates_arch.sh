@@ -1,4 +1,5 @@
 #!/bin/sh
+set -m
 
 STRING_TEMPLATE=' %s, %s\n'
 TMP_DIR=/tmp/updates_arch
@@ -12,7 +13,7 @@ _printupdates() {
 }
 
 _checkpacman() {
-    _pacman_updates=$(checkupdates -Qu 2> /dev/null | wc -l)
+    _pacman_updates=$(checkupdates 2> /dev/null | wc -l)
     [ $? -eq 0 ] && echo "$_pacman_updates" > "$TMP_DIR/pacman"
 }
 
@@ -44,20 +45,28 @@ do
 done &
 aur_process=$!
 
-# update on USR1 signal
-trap _checkupdates USR1
-
 # kill inotifywait processes on exit
-# I'm not sure if this is necessary!
-trap "kill $pacman_process; kill $aur_process" EXIT
+trap "kill -- -$pacman_process; kill -- -$aur_process" EXIT
 
 # initial update
 _printupdates
 _checkupdates
-while :
+
+_usr1_handler() {
+    kill -- -$sleep_pid
+    _checkupdates
+}
+
+# update on USR1 signal
+trap _usr1_handler USR1
+
+#echo "my pid is $$"
+
+while true
 do
     # update every 15min
     sleep 900 && _checkupdates &
-    wait $!
+    sleep_pid=$!
+    wait $sleep_pid
 done
 
