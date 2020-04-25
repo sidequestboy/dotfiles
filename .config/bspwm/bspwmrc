@@ -4,6 +4,7 @@ bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
 
 $XDG_CONFIG_HOME/bspwm/monitor.sh
+$XDG_CONFIG_HOME/bspwm/keyboard.sh
 
 bspc config pointer_modifier mod3
 bspc config focus_follows_pointer true
