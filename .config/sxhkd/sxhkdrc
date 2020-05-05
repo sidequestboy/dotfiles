@@ -47,10 +47,18 @@ mod3 + alt + Return
 	alacritty -e tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" attach
 mod3 + alt + BackSpace
 	"$HOME/.local/bin/lock.sh"
+mod3 + d
+	tdrop -am -s dropdown alacritty --class scratchpad,Alacritty
 
 # screenshot
 {_,@}Print
 	scrot{ ,-s}
+
+mod3 + y
+	tdrop -am keepassxc
+
+mod3 + p
+	tdrop -m pavucontrol
 
 # BSPWM {{{1
 # quit/restart bspwm
@@ -85,7 +93,7 @@ mod3 + {comma,period}
 	bspc node -f @{parent,brother}
 
 # focus the next/previous node in the current desktop
-mod3 + {n,p}
+alt + {n,p}
 	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
@@ -97,11 +105,14 @@ alt + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus or send to the given desktop
-mod3 + {_,alt + }{1-9,0}
-	bspc {desktop -f,node -d} 'focused:^{1-9,10}'
+mod3 + {1-9,0}
+	bspc desktop -f 'focused:^{1-9,10}'
+
+mod3 + alt + {1-9,0}
+	bspc node -d 'focused:^{1-9,10}' --follow
 
 mod3 + alt + grave
-	bspc node -m any.!focused --follow
+	bspc node -m any.!focused --follow $(/home/jamie/.config/bspwm/node_defaults.sh)
 
 # focus or send to the given desktop
 #mod3 + ctrl + {_,alt + }{1-9,0}

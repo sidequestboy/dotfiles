@@ -22,6 +22,7 @@ bspc rule -a "mpv" state=floating
 bspc rule -a "Show-splash-gtk" desktop='focused:^7' state=floating
 bspc rule -a "Bitwig Studio" desktop='focused:^7'
 bspc rule -a "Spotify" desktop='focused:^5'
+#bspc rule -a "*:scratchpad" state=floating
 
 xsetroot -cursor_name left_ptr &
 
