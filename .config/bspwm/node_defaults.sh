@@ -26,6 +26,6 @@ options=''
 
 [ -n "$desktop" ] && options="$options -d $desktop --follow"
 [ -n "$state"   ] && options="$options -t $state"
-[ -n "$layer"   ] && options="$node_sel -l $layer"
+[ -n "$layer"   ] && options="$options -l $layer"
 
 echo "$options"
