@@ -112,7 +112,7 @@ mod3 + alt + {1-9,0}
 	bspc node -d 'focused:^{1-9,10}' --follow
 
 mod3 + alt + grave
-	bspc node -m any.!focused --follow $(/home/jamie/.config/bspwm/node_defaults.sh)
+	bspc node -m any.!focused --follow $($XDG_CONFIG_HOME/bspwm/node_defaults.sh)
 
 # focus or send to the given desktop
 #mod3 + ctrl + {_,alt + }{1-9,0}
