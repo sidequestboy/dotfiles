@@ -2,7 +2,7 @@
 # Prints desktop, state, layer rules defined by `bspc rule -l`
 # for focused window or provided node id and formatted for
 # `bspc node` commands
-# e.g. `node -m any.!focused $(node_defaults.sh)`
+# e.g. `bspc node -m any.!focused $(node_defaults.sh)`
 
 node_sel="$1"
 [ -z "$node_sel" ] && node_sel=$(bspc query -N focused -n)
