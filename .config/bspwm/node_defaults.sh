@@ -18,7 +18,7 @@ rules_2=$(echo "$rules" | grep "^\*:$node_instance "          | awk -F '=> ' '{ 
 rules_3=$(echo "$rules" | grep "^$node_class:\* "             | awk -F '=> ' '{ print $2 }')
 rules_4=$(echo "$rules" | grep "^\*:\* "                      | awk -F '=> ' '{ print $2 }')
 
-rules=$(echo "$rules_1\n$rules_2\n$rules_3\n$rules_4")
+rules="$rules_1\n$rules_2\n$rules_3\n$rules_4"
 
 desktop=$(echo "$rules" | grep -o -P 'desktop=\S+' | head -n1 | cut -d'=' -f2)
 state=$(  echo "$rules" | grep -o -P 'state=\S+'   | head -n1 | cut -d'=' -f2)
