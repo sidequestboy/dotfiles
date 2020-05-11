@@ -4,7 +4,7 @@ After=pulseaudio
 Requires=wm.target
 
 [Service]
-ExecStart=/usr/bin/xidlehook --not-when-audio --timer 300 %h/.local/bin/lock.sh ''
+ExecStart=%h/.local/bin/screensaver.sh
 Restart=always
 
 [Install]

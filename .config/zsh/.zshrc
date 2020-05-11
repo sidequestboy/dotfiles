@@ -10,23 +10,26 @@ autoload -U promptinit; promptinit
 
 # vim keys n stuff
 bindkey -v
+bindkey '^?' backward-delete-char
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 bindkey '^R' history-incremental-search-backward
 bindkey '^P' up-history
 bindkey '^N' down-history
+bindkey '^q' push-line-or-edit
 
 # locale
 export LC_CTYPE="en_US.UTF-8"
 
-export LESS='--mouse'
+export LESS='--mouse --wheel-lines=3'
 
 # share history between terminals
 setopt share_history
 
 export BROWSER='chromium'
-export EDITOR='nvim'
 export PATH=~/.local/bin:$PATH
+export EDITOR='edit.sh'
+export TERMINAL='alacritty'
 
 export KANBANFILE='~/.kanban.csv'
 
@@ -47,6 +50,9 @@ alias scrot_full="scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/pics/screenshots'
 alias cp="rsync -avzz --progress"
 alias startx="startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias gs="git status"
+alias cheat="cheat --color"
+alias ch=cheat
+alias e="$EDITOR"
 
 # program shortcuts
 alias r="ranger"
@@ -57,8 +63,15 @@ alias prm=". $HOME/.local/bin/prm.sh"
 # systemd
 alias ss="sudo systemctl"
 alias sjctl="sudo journalctl"
-alias uctl="systemctl --user"
+alias u="systemctl --user"
 alias udr="systemctl --user daemon-reload"
+alias us="systemctl --user status"
+alias ue="systemctl --user edit --full"
+
+function scriptedit() {
+    $EDITOR "$HOME/.local/bin/$1"
+}
+alias ee="scriptedit"
 
 # task shortcuts
 alias vw="$EDITOR ~/vimwiki/index.wiki"

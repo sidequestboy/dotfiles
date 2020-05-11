@@ -34,6 +34,7 @@ XF86AudioPrev
 XF86AudioPlay
 	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
+
 # APPS {{{1
 
 # rofi
@@ -48,11 +49,16 @@ mod3 + alt + Return
 mod3 + alt + BackSpace
 	"$HOME/.local/bin/lock.sh"
 mod3 + d
-	tdrop -am -s dropdown alacritty --class scratchpad,Alacritty
+	tdrop -n 1 -am -s dropdown alacritty --class dropdown,Alacritty
+mod3 + n
+	"$HOME/.local/bin/edit.sh"
+
+alt + space
+	"$XDG_CONFIG_HOME/rofi/launcher.sh"
 
 # screenshot
-{_,@}Print
-	scrot{ ,-s}
+{alt + ,@}Print
+	maim{ , -s }"$HOME/pics/screenshots/$(date '+%F %T').png"
 
 mod3 + y
 	tdrop -am keepassxc
@@ -123,7 +129,7 @@ mod3 + grave
 
 # mod4 + 1
 # 	bspc monitor -f HDMI1
-# 
+#
 # mod4 + 2
 # 	bspc monitor -f eDP1
 
@@ -158,6 +164,21 @@ mod3 + ctrl + shift + space
 # move a floating window
 alt + mod4 + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+~button3
+	/home/jamie/.config/bspwm/mouse.sh
+
+button2
+	xdotool keydown Alt_L
+
+~any + @button2
+	xdotool keyup Alt_L
+
+#button4
+#	$XDG_CONFIG_HOME/bspwm/scroll.sh up
+#
+#button5
+#	$XDG_CONFIG_HOME/bspwm/scroll.sh down
 
 # DWM-specific calls {{{1
 # TODO: add dwmc patch

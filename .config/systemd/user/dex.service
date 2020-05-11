@@ -3,7 +3,7 @@ Description=XDG autostart
 Requires=wm.target
 
 [Service]
-ExecStart=/usr/bin/dex -a
+ExecStart=/usr/bin/dex -as %E/autostart
 Type=oneshot
 RemainAfterExit=yes
 

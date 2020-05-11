@@ -78,14 +78,14 @@ window:
   # Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
 
-#scrolling:
+scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  #history: 10000
+  history: 10000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
-  #multiplier: 3
+  multiplier: 3
 
   # Scroll to the bottom when new text is written to the terminal.
   #auto_scroll: false
@@ -103,7 +103,7 @@ window:
 font:
   normal:
     family: Fira Mono Nerd Font Mono
-  size: 11.0
+  size: 10.5
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -112,8 +112,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    color000000: '0x000000'
-    coloradc0d1: '0xadc0d1'
+    color190c1f: '0x190c1f'
+    colorf6e7db: '0xf6e7db'
 
   # Cursor colors
   cursor:
@@ -122,25 +122,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0x585C55'
-    green:   '0x9E0F07'
-    yellow:  '0xC94E1C'
-    blue:    '0x77816A'
-    magenta: '0xE2A433'
-    cyan:    '0x456998'
-    white:   '0xadc0d1'
+    black:   '0x190c1f'
+    red:     '0xAC4B5F'
+    green:   '0xD25B66'
+    yellow:  '0xDF807F'
+    blue:    '0xEDA196'
+    magenta: '0xF7C9B4'
+    cyan:    '0xFEDEC7'
+    white:   '0xf6e7db'
 
   # Bright colors
   bright:
-    black:   '0x798692'
-    red:     '0x585C55'
-    green:   '0x9E0F07'
-    yellow:  '0xC94E1C'
-    blue:    '0x77816A'
-    magenta: '0xE2A433'
-    cyan:    '0x456998'
-    white:   '0xadc0d1'
+    black:   '0xaca199'
+    red:     '0xAC4B5F'
+    green:   '0xD25B66'
+    yellow:  '0xDF807F'
+    blue:    '0xEDA196'
+    magenta: '0xF7C9B4'
+    cyan:    '0xFEDEC7'
+    white:   '0xf6e7db'
 
 # color_end
 
@@ -176,11 +176,11 @@ colors:
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 0.6
 
-#selection:
+selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+  save_to_clipboard: true
 
 # Allow terminal applications to change Alacritty's window title.
 #dynamic_title: true

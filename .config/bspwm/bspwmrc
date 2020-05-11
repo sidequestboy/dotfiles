@@ -6,12 +6,11 @@ bspc config remove_disabled_monitors true
 $XDG_CONFIG_HOME/bspwm/monitor.sh
 $XDG_CONFIG_HOME/bspwm/keyboard.sh
 
-bspc config pointer_modifier mod3
+bspc config pointer_modifier mod1
 bspc config focus_follows_pointer true
-bspc config pointer_action3 none
 
-bspc config border_width         5
-bspc config window_gap         20
+bspc config border_width         3
+bspc config window_gap          20
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
@@ -22,6 +21,8 @@ bspc rule -a "mpv" state=floating
 bspc rule -a "Show-splash-gtk" desktop='focused:^7' state=floating
 bspc rule -a "Bitwig Studio" desktop='focused:^7'
 bspc rule -a "Spotify" desktop='focused:^5'
+bspc rule -a "Steam" desktop='focused:^4'
+bspc rule -a '*' center=true
 #bspc rule -a "*:scratchpad" state=floating
 
 xsetroot -cursor_name left_ptr &
@@ -29,3 +30,4 @@ xsetroot -cursor_name left_ptr &
 if ! systemctl --user status wm.target; then
     systemctl --user restart wm.target
 fi
+
