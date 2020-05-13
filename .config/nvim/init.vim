@@ -1,6 +1,6 @@
 "Global Variables {{{1
 "see after/plugin/mappings.vim for maps
-let mapleader='-'
+let mapleader=','
 let maplocalleader=' '
 
 "colours
@@ -85,6 +85,7 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
 "{{{2
 Plug 'lambdalisue/suda.vim'
 Plug 'ap/vim-css-color'
+Plug 'tpope/vim-obsession'
 Plug 'thaerkh/vim-workspace'
 
 "eye candy
