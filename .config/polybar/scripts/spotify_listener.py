@@ -28,13 +28,17 @@ def properties_changed_handler(*args):
                     system("polybar-msg hook playpause 2")
                 if PlaybackStatus == 'Playing':
                     system("polybar-msg hook playpause 3")
+                system("polybar-msg hook previous 3")
+                system("polybar-msg hook next 3")
+                system("polybar-msg hook spotify 1")
     except (KeyError, IndexError):
         pass
 
 def spotify_quit_handler(*args):
     data = unwrap(args)
     try:
-        if data[0] == 'org.mpris.MediaPlayer2.spotify':
+        if data[0] == 'org.mpris.MediaPlayer2.spotify' and system('[ ! -z "$(pgrep spotify)" ]'):
+            print(data)
             print("Spotify quitting...")
             system("polybar-msg hook playpause 4")
             system("polybar-msg hook previous 2")
