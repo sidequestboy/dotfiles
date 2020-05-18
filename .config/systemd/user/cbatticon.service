@@ -1,9 +1,0 @@
-[Unit]
-Description=Battery system tray applet
-Requires=wm.target
-
-[Service]
-ExecStart=/usr/bin/cbatticon
-
-[Install]
-WantedBy=wm.target

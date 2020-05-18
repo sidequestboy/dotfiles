@@ -1,0 +1,40 @@
+#! /usr/bin/env python3
+
+import re
+import subprocess
+from pyudev import Context, Monitor, MonitorObserver
+
+def hotplug_handler():
+    print("Calling keyboard.sh")
+    subprocess.run("~/.config/bspwm/keyboard.sh", shell=True)
+
+def observer_callback(device):
+    if device.action != 'add':
+        return
+    if 'ID_INPUT_KEYBOARD' not in device.properties or device.properties['ID_INPUT_KEYBOARD'] != '1':
+        return
+    if re.search('^/sys/devices/virtual', device.sys_path):
+        return
+    if re.search('^event[0-9]+\Z', device.sys_name):
+        return
+    if 'ID_USB_INTERFACE_NUM' not in device.properties or device.properties['ID_USB_INTERFACE_NUM'] != '00':
+        return
+
+    print("Added keyboard:")
+    print(device.properties['NAME'])
+    print(device.sys_path)
+
+    hotplug_handler()
+
+if __name__ == '__main__':
+    context = Context()
+    monitor = Monitor.from_netlink(context)
+    monitor.filter_by(subsystem='input')
+
+    observer = MonitorObserver(monitor, callback=observer_callback, name='monitor-observer')
+    observer.daemon = False
+
+    hotplug_handler()
+    observer.start()
+
+# vim: set ft=python:
