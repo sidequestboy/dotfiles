@@ -1,6 +1,6 @@
 [Unit]
 Description=Automatic screen locker
-After=pulseaudio
+Requires=pulseaudio.service
 Requires=wm.target
 
 [Service]

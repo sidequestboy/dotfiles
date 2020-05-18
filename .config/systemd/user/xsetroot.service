@@ -1,9 +1,9 @@
 [Unit]
 Description="Display info on dwm bar"
-Requires=wm.target
+Requires=dwm.target
 
 [Service]
 ExecStart=%h/.local/lib/dwm/xsetroot.sh
 
 [Install]
-WantedBy=wm.target
+WantedBy=dwm.target

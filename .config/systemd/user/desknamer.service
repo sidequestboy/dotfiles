@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatic desktop naming for bspwm
+Requires=bspwm.target
+
+[Service]
+ExecStart=%h/.local/bin/desknamer
+
+[Install]
+WantedBy=bspwm.target
+

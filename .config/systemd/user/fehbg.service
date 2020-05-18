@@ -1,9 +1,9 @@
 [Unit]
 Description=Restore background
-Requires=wm.target
+Requires=x11.target
 
 [Service]
 ExecStart=%h/.fehbg
 
 [Install]
-WantedBy=wm.target
+WantedBy=x11.target

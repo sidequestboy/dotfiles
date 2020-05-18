@@ -1,0 +1,5 @@
+[Unit]
+Description=BSPWM has started
+Requires=x11.target
+After=x11.target
+Wants=wm.target

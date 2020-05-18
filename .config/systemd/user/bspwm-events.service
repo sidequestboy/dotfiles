@@ -1,0 +1,10 @@
+[Unit]
+Description=Watch for bspwm events
+Requires=bspwm.target
+
+[Service]
+ExecStart=%h/.local/lib/bspwm/watch_events.sh
+
+[Install]
+WantedBy=bspwm.target
+

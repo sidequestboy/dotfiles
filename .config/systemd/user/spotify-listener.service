@@ -1,9 +1,6 @@
 [Unit]
 Description=Watch for spotify open for polybar controls
-Requires=wm.target
 
 [Service]
-ExecStart=%E/polybar/scripts/spotify_listener.py
+ExecStart=%h/.local/lib/polybar/spotify_listener.py
 
-[Install]
-WantedBy=wm.target

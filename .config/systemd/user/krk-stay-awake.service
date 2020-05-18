@@ -1,0 +1,10 @@
+[Unit]
+Description=Keep KRK monitors live
+Requires=pulseaudio.service
+
+[Service]
+ExecStart=%h/.local/bin/krk-stay-awake.sh
+
+[Install]
+WantedBy=default.target
+

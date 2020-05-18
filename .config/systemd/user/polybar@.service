@@ -1,0 +1,10 @@
+[Unit]
+Description=X11 status bar on monitor %i
+Requires=wm.target
+
+[Service]
+Environment="MONITOR=%i"
+ExecStart=%h/.local/lib/polybar/polybar-wrapper.sh top
+
+[Install]
+WantedBy=bspwm.target

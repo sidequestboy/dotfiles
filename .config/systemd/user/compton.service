@@ -1,6 +1,6 @@
 [Unit]
 Description=Xorg compositor
-Documentation=man:picom(1)
+Documentation=man:compton(1)
 Requires=wm.target
 
 [Service]
