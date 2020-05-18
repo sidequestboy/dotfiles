@@ -9,6 +9,16 @@ from os import system
 
 CACHED_STATE = { 'mpris:trackid': None, 'PlaybackStatus': None }
 
+def update_polybar():
+    if CACHED_STATE['PlaybackStatus'] == 'Paused':
+        system("polybar-msg hook playpause 2")
+    if CACHED_STATE['PlaybackStatus'] == 'Playing':
+        system("polybar-msg hook playpause 3")
+    system("polybar-msg hook spotify 1")
+    system("polybar-msg hook previous 3")
+    system("polybar-msg hook next 3")
+
+
 def properties_changed_handler(*args):
     data = unwrap(args)
     try:
@@ -16,21 +26,15 @@ def properties_changed_handler(*args):
         PlaybackStatus = data[1]['PlaybackStatus']
         if trackid.startswith('spotify'):
             if CACHED_STATE['mpris:trackid'] != trackid:
+                CACHED_STATE['mpris:trackid'] = trackid
                 print("Spotify track change.")
                 print(CACHED_STATE)
-                system("polybar-msg hook spotify 1")
-                CACHED_STATE['mpris:trackid'] = trackid
-            if CACHED_STATE['PlaybackStatus'] != PlaybackStatus:
+                update_polybar()
+            elif CACHED_STATE['PlaybackStatus'] != PlaybackStatus:
                 CACHED_STATE['PlaybackStatus'] = PlaybackStatus
                 print("Spotify play/pause toggle.")
                 print(CACHED_STATE)
-                if PlaybackStatus == 'Paused':
-                    system("polybar-msg hook playpause 2")
-                if PlaybackStatus == 'Playing':
-                    system("polybar-msg hook playpause 3")
-                system("polybar-msg hook previous 3")
-                system("polybar-msg hook next 3")
-                system("polybar-msg hook spotify 1")
+                update_polybar()
     except (KeyError, IndexError):
         pass
 
