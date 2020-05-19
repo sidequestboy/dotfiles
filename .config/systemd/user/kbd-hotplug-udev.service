@@ -1,11 +1,9 @@
 [Unit]
 Description=udev xmodmap monitor
-Requires=x11.target
+After=x11.target
 
 [Service]
 ExecStart=%h/.local/lib/X11/kbd-hotplug-udev
-Restart=always
-RestartSec=10
 
 [Install]
 WantedBy=x11.target
