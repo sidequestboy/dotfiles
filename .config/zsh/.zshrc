@@ -28,10 +28,12 @@ setopt share_history
 
 export BROWSER='chromium'
 export PATH=~/.local/bin:$PATH
-export EDITOR='edit.sh'
+export EDITOR='nvim'
 export TERMINAL='alacritty'
+export NVIM_LISTEN_ADDRESS='/tmp/nvimsocket'
 
 export KANBANFILE='~/.kanban.csv'
+export FZF_DEFAULT_COMMAND='rg --hidden --files'
 
 setopt auto_cd
 
@@ -56,7 +58,8 @@ alias e="$EDITOR"
 
 # program shortcuts
 alias r="ranger"
-alias e="$EDITOR"
+alias e="edit.sh"
+alias v="$EDITOR"
 alias chat="weechat"
 alias prm=". $HOME/.local/bin/prm.sh"
 
@@ -67,11 +70,8 @@ alias u="systemctl --user"
 alias udr="systemctl --user daemon-reload"
 alias us="systemctl --user status"
 alias ue="systemctl --user edit --full"
-
-function scriptedit() {
-    $EDITOR "$HOME/.local/bin/$1"
-}
-alias ee="scriptedit"
+alias j="journalctl --user -b 0 -e"
+alias sj="sudo journalctl -b 0 -e"
 
 # task shortcuts
 alias vw="$EDITOR ~/vimwiki/index.wiki"
@@ -89,6 +89,11 @@ function chpwd() {
 __git_files () {
     _wanted files expl 'local files' _files
 }
+
+# workaround https://github.com/ohmyzsh/ohmyzsh/issues/8751
+_systemctl_unit_state() {
+  typeset -gA _sys_unit_state
+  _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') ) }
 
 # plugins
 # check if zplug is installed

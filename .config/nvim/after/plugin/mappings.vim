@@ -6,8 +6,8 @@ nnoremap <leader>n :bn<cr>
 nnoremap <leader>p :bp<cr>
 nnoremap <leader>l :ls<cr>
 nnoremap <leader>g :ls<cr>:b<Space>
-nnoremap <leader>c :e ~/.config/nvim/init.vim<cr>
-nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>:source ~/.config/nvim/after/plugin/mappings.vim<cr>
+nnoremap <leader>c :n ~/.config/nvim/init.vim ~/.config/nvim/after/plugin/mappings.vim<cr>
+nnoremap <leader>S :source ~/.config/nvim/init.vim<cr>:source ~/.config/nvim/after/plugin/mappings.vim<cr>
 nnoremap <leader>x :bdelete<cr>
 nnoremap <leader>h :Helptags<cr>
 nnoremap <leader><Space> :Commands<cr>
@@ -15,6 +15,8 @@ nnoremap <leader>f :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>t :ToggleWorkspace<cr>
 nnoremap <leader>P <Plug>(Prettier)
+nnoremap <leader>sp :Obsession<cr>
+nnoremap <Leader>sr :so  . g:session_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
 "terminal
 tnoremap <Esc> <C-\><C-n>

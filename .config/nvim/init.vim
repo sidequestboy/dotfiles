@@ -87,6 +87,7 @@ Plug 'lambdalisue/suda.vim'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-obsession'
 Plug 'thaerkh/vim-workspace'
+Plug 'markonm/traces.vim'
 
 "eye candy
 Plug 'vim-airline/vim-airline'
@@ -113,6 +114,7 @@ call plug#end()
 
 let g:auto_save = 1
 
+let g:session_dir= $XDG_CONFIG_HOME . '/nvim/sessions'
 let g:workspace_session_directory = $XDG_CONFIG_HOME . '/nvim/sessions/'
 let g:workspace_create_new_tabs = 0
 let g:workspace_autosave_always = 1
@@ -129,8 +131,11 @@ if !exists("autocommands_loaded")
   autocmd BufNewFile,BufRead *.service* set ft=systemd
   autocmd FileType vimwiki let b:auto_save = 0
   autocmd BufWritePost *.wiki execute '!task sync'
-  autocmd BufWinEnter,WinEnter term://* startinsert
+  autocmd TermOpen * startinsert
+  autocmd BufEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
+
+  autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 
   autocmd FileType denite call s:denite_my_settings()
   function! s:denite_my_settings() abort

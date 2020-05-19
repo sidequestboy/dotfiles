@@ -66,7 +66,4 @@ modules-left = bspwm previous playpause next spotify
 modules-center = date
 modules-right = github wlan pulseaudio battery updates-arch-combined
 
-tray-position = right
-tray-detached = false
-
 ; vim: set ft=dosini:
