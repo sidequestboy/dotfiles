@@ -35,4 +35,3 @@ if __name__ == '__main__':
     for device in filter(is_keyboard, iter(monitor.poll, None)):
         hotplug_handler()
 
-# vim: set ft=python:

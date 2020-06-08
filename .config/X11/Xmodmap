@@ -1,0 +1,4 @@
+keycode 23 = Hyper_R
+add mod3 = Hyper_R
+keycode any = Tab
+

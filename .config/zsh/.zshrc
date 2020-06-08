@@ -9,15 +9,24 @@ autoload -Uz compinit; compinit
 autoload -U promptinit; promptinit
 
 # vim keys n stuff
-bindkey -v
+#bindkey -v
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
 bindkey '^?' backward-delete-char
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
-bindkey '^R' history-incremental-search-backward
-bindkey '^P' up-history
-bindkey '^N' down-history
 bindkey '^q' push-line-or-edit
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^V' edit-command-line
+
+_history-incremental-search-backward () {
+    zle .history-incremental-search-backward $BUFFER
+}
+zle -N history-incremental-search-backward _history-incremental-search-backward
+#bindkey '^R' history-incremental-search-backward
+bindkey -M isearch '^S' history-incremental-search-forward
 # locale
 export LC_CTYPE="en_US.UTF-8"
 
@@ -27,7 +36,7 @@ export LESS='--mouse --wheel-lines=3'
 setopt share_history
 
 export BROWSER='chromium'
-export PATH=~/.local/bin:$PATH
+export PATH=~/.gem/ruby/2.7.0/bin:~/.local/bin:$PATH
 export EDITOR='nvim'
 export TERMINAL='alacritty'
 export NVIM_LISTEN_ADDRESS='/tmp/nvimsocket'
@@ -74,7 +83,7 @@ alias j="journalctl --user -b 0 -e"
 alias sj="sudo journalctl -b 0 -e"
 
 # task shortcuts
-alias vw="$EDITOR ~/vimwiki/index.wiki"
+alias vw="$EDITOR ~/docs/vimwiki/index.wiki"
 alias t="taskell ~/sync/taskell.md"
 
 alias ssh='TERM=xterm ssh'

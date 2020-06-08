@@ -1,22 +1,28 @@
 "mappings here override plugin mappings
 
-nnoremap ; :
-
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>p :bp<cr>
-nnoremap <leader>l :ls<cr>
-nnoremap <leader>g :ls<cr>:b<Space>
-nnoremap <leader>c :n ~/.config/nvim/init.vim ~/.config/nvim/after/plugin/mappings.vim<cr>
-nnoremap <leader>S :source ~/.config/nvim/init.vim<cr>:source ~/.config/nvim/after/plugin/mappings.vim<cr>
-nnoremap <leader>x :bdelete<cr>
-nnoremap <leader>h :Helptags<cr>
-nnoremap <leader><Space> :Commands<cr>
+nnoremap <leader>ec :e ~/.config/nvim/init.vim<cr>
+nnoremap <leader>em :e ~/.config/nvim/after/plugin/mappings.vim<cr>
+nnoremap <leader>d :bdelete<cr>
+nnoremap <leader>H :Helptags<cr>
+nnoremap <leader>m :Maps<cr>
+nnoremap <leader>N :new \| only<cr>
+nnoremap <leader>g :Buffers<cr>
+"nnoremap <leader>g :ls<cr>:b<Space>
 nnoremap <leader>f :Files<cr>
-nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>c :Commands<cr>
 nnoremap <leader>t :ToggleWorkspace<cr>
 nnoremap <leader>P <Plug>(Prettier)
-nnoremap <leader>sp :Obsession<cr>
-nnoremap <Leader>sr :so  . g:session_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
+nnoremap <leader>I :PlugInstall<cr>
+nnoremap <leader>s :s/
+nnoremap Q <nop>
+
+nnoremap <F5> :source ~/.config/nvim/init.vim<cr>:source ~/.config/nvim/after/plugin/mappings.vim<cr>
+
+"insert mode undo
+inoremap <C-R> <C-G>u<C-R>
+inoremap <C-Z> <C-O>u
 
 "terminal
 tnoremap <Esc> <C-\><C-n>
@@ -36,4 +42,15 @@ tmap <C-l> <C-\><C-n><C-l>
 tmap <C-h> <C-\><C-n><C-h>
 tmap <C-k> <C-\><C-n><C-k>
 tmap <C-j> <C-\><C-n><C-j>
+
+tnoremap <silent> <A-l> <C-\><C-n>:TmuxResizeRight<cr>
+tnoremap <silent> <A-j> <C-\><C-n>:TmuxResizeDown<cr>
+tnoremap <silent> <A-k> <C-\><C-n>:TmuxResizeUp<cr>
+tnoremap <silent> <A-h> <C-\><C-n>:TmuxResizeLeft<cr>
+
+" explicitly give sneak priority on this map over surround.
+" could also just load sneak first, but explicit is better.
+xmap S <Plug>Sneak_S
+" replace surround function with this.
+xmap <leader>s <Plug>VSurround
 

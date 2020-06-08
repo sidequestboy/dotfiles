@@ -6,6 +6,8 @@ bspc config remove_disabled_monitors true
 $HOME/.local/lib/bspwm/monitor.sh
 $HOME/.local/lib/X11/keyboard.sh
 
+$HOME/.local/lib/bspwm/floating-desktop.sh &
+
 bspc config pointer_modifier mod1
 bspc config focus_follows_pointer true
 xsetroot -cursor_name left_ptr &
@@ -25,7 +27,7 @@ bspc rule -a "Show-splash-gtk" desktop='focused:^7' state=floating
 bspc rule -a "Bitwig Studio" desktop='focused:^7'
 bspc rule -a "Spotify" desktop='focused:^5'
 bspc rule -a "Steam" desktop='focused:^4'
-bspc rule -a '*' center=true
+bspc rule -a '*' state=pseudo_tiled center=true
 #bspc rule -a "*:scratchpad" state=floating
 
 if ! systemctl --user --quiet is-active bspwm.target; then

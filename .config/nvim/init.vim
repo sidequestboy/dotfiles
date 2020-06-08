@@ -1,7 +1,7 @@
 "Global Variables {{{1
 "see after/plugin/mappings.vim for maps
-let mapleader=','
-let maplocalleader=' '
+let mapleader='-'
+let maplocalleader='\\'
 
 "colours
 hi folded ctermbg=NONE
@@ -22,6 +22,11 @@ set sw=4
 set ts=4
 set undodir=$XDG_CONFIG_HOME/nvim/undo
 set undofile
+set noshowmode
+set clipboard=unnamedplus
+
+highlight SneakScope ctermfg=black ctermbg=red
+highlight Sneak ctermfg=black ctermbg=red
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -41,6 +46,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/vim-plug'
 
 "utility
+Plug 'unblevable/quick-scope'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'RyanMillerC/better-vim-tmux-resizer'
 Plug '907th/vim-auto-save'
@@ -68,10 +74,14 @@ if exists('g:started_by_firenvim')
   set nonumber
   let g:loaded_airline = 1
 else
+  let g:airline#extensions#tabline#ignore_bufadd_pat = 'defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
+  let g:airline_exclude_filenames = [ 'term://' ]
+  let g:airline_exclude_filetypes = [ 'noairline' ]
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#left_sep = ' '
   let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_theme='base16_chalk'
+  "let g:airline_theme='base16_chalk'
+  let g:airline_theme='base16'
   let g:airline_powerline_fonts = 1
 endif
 "2}}}
@@ -100,6 +110,7 @@ Plug 'tbabej/taskwiki'
 Plug 'jceb/vim-orgmode'
 
 "programming
+Plug 'vitalk/vim-shebang'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -121,37 +132,33 @@ let g:workspace_autosave_always = 1
 
 let g:tmux_resizer_no_mappings = 1
 
+highlight HorizSplit ctermbg=NONE ctermfg=NONE
+
+
 
 "Autocommands{{{1
-if !exists("autocommands_loaded")
-  let autocommands_loaded = 1
-
+augroup autocmds
+  autocmd!
   autocmd BufNewFile,BufRead *.md set ft=markdown
   autocmd BufNewFile,BufRead *.markdown set ft=markdown
   autocmd BufNewFile,BufRead *.service* set ft=systemd
   autocmd FileType vimwiki let b:auto_save = 0
   autocmd BufWritePost *.wiki execute '!task sync'
-  autocmd TermOpen * startinsert
+  "autocmd TermOpen * startinsert
+  autocmd TermOpen * setlocal nonumber bufhidden=hide modified
   autocmd BufEnter,WinEnter term://* startinsert
-  autocmd BufLeave term://* stopinsert
-
+  autocmd BufLeave term://* stopinsert | set statusline=%#Normal#
   autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
-
   autocmd FileType denite call s:denite_my_settings()
-  function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-    \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d
-    \ denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p
-    \ denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q
-    \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-    \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-    \ denite#do_map('toggle_select').'j'
-  endfunction
-endif
+  autocmd BufEnter * if &ft ==# 'help' | wincmd o | endif
+  autocmd BufEnter * if &ft ==# 'help' | nnoremap u <C-u> | nnoremap d <C-d> | endif
+augroup end
+highlight QuickScopePrimary cterm=bold
+highlight QuickScopeSecondary cterm=bold
+augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary ctermfg=80 cterm=bold
+  autocmd ColorScheme * highlight QuickScopeSecondary ctermfg=83 cterm=bold
+augroup END
 
-"vim: set foldmethod=marker:
+" vim: set ts=2 sw=2 expandtab:

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 while read event; do
-    ${HOME}/.local/bin/monitor.sh
+    ${HOME}/.local/lib/bspwm/monitor.sh
 done < <(bspc subscribe monitor_add monitor_remove)

@@ -2,3 +2,5 @@
 Description=Window manager has started
 Requires=x11.target
 After=x11.target
+PartOf=bspwm.target
+PartOf=dwm.target

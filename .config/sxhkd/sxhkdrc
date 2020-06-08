@@ -41,21 +41,31 @@ XF86AudioPlay
 mod3 + space
 	"$XDG_CONFIG_HOME/rofi/launcher.sh"
 
+# web
+mod3 + w
+	chromium
+
+mod3 + alt + w
+	chromium --incognito
+
 # terminal / tmux
 mod3 + Return
-	alacritty -e tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" new
+	alacritty -d 105 45 -e tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" new
 mod3 + alt + Return
-	alacritty -e tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" attach
+	alacritty -d 100 45 -e tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" attach
 mod3 + alt + BackSpace
 	"$HOME/.local/bin/lock.sh"
 mod3 + d
-	tdrop -n 1 -am -s dropdown alacritty --class dropdown,Alacritty
+	tdrop -n 1 -m -s dropdown alacritty --class dropdown,Alacritty
 mod3 + n
 	"$HOME/.local/bin/edit.sh"
 mod3 + y
 	tdrop -n 1 chromium --app=https://yogaanytime.com
 mod3 + g
 	tdrop -n 2 chromium --new-window https://github.com
+
+alt + t
+	tdrop current
 
 alt + space
 	"$XDG_CONFIG_HOME/rofi/launcher.sh"
@@ -72,15 +82,16 @@ mod3 + p
 
 # BSPWM {{{1
 # quit/restart bspwm
-mod3 + alt + {q,r}
-	bspc {quit,wm -r}
+mod3 + alt + q
+	systemctl --user --wait stop bspwm.target wm.target; bspc quit
+mod3 + alt + r
+	bspc wm -r
 
 # close and kill
-mod3 + {_,shift + }BackSpace
-	bspc node -{c,k}
-
+mod3 + BackSpace
+	"$HOME/.local/lib/bspwm/quit.sh"
 mod3 + apostrophe
-	bspc node -c
+	"$HOME/.local/lib/bspwm/quit.sh"
 
 # alternate between the tiled and monocle layout
 mod3 + m
@@ -169,10 +180,14 @@ mod3 + ctrl + shift + space
 alt + mod4 + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-@button4
-	echo scroll up release >> ~/mouse.txt
-button4
-	echo scroll up press>> ~/mouse.txt
+#@button4
+#	echo scroll up release >> ~/mouse.txt
+#button4
+#	echo scroll up press>> ~/mouse.txt
+#
+
+mod3 + @button1
+	bspc move-start &; xdotool mousedown 1
 
 # DWM-specific calls {{{1
 # TODO: add dwmc patch

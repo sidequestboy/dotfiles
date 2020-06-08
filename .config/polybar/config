@@ -64,6 +64,6 @@ enable-ipc = true
 
 modules-left = bspwm previous playpause next spotify
 modules-center = date
-modules-right = github wlan pulseaudio battery updates-arch-combined
+modules-right = yeelight github wlan pulseaudio battery updates-arch-combined
 
 ; vim: set ft=dosini:

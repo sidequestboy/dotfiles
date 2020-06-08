@@ -17,9 +17,9 @@ window:
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  #dimensions:
-  #  columns: 0
-  #  lines: 0
+  dimensions:
+    columns: 100
+    lines: 45
 
   # Window position (changes require restart)
   #
@@ -102,7 +102,7 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: Fira Mono Nerd Font Mono
+      family: monospace
   size: 10.5
 
 # If `true`, bold text is drawn using the bright color variants.
@@ -112,8 +112,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    color190c1f: '0x190c1f'
-    colorf6e7db: '0xf6e7db'
+    color0b1018: '0x0b1018'
+    colord1dbdc: '0xd1dbdc'
 
   # Cursor colors
   cursor:
@@ -122,25 +122,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x190c1f'
-    red:     '0xAC4B5F'
-    green:   '0xD25B66'
-    yellow:  '0xDF807F'
-    blue:    '0xEDA196'
-    magenta: '0xF7C9B4'
-    cyan:    '0xFEDEC7'
-    white:   '0xf6e7db'
+    black:   '0x0b1018'
+    red:     '0x57738A'
+    green:   '0x8B7E81'
+    yellow:  '0x748C96'
+    blue:    '0x779EC4'
+    magenta: '0x96A4A7'
+    cyan:    '0xBCACA5'
+    white:   '0xd1dbdc'
 
   # Bright colors
   bright:
-    black:   '0xaca199'
-    red:     '0xAC4B5F'
-    green:   '0xD25B66'
-    yellow:  '0xDF807F'
-    blue:    '0xEDA196'
-    magenta: '0xF7C9B4'
-    cyan:    '0xFEDEC7'
-    white:   '0xf6e7db'
+    black:   '0x92999a'
+    red:     '0x57738A'
+    green:   '0x8B7E81'
+    yellow:  '0x748C96'
+    blue:    '0x779EC4'
+    magenta: '0x96A4A7'
+    cyan:    '0xBCACA5'
+    white:   '0xd1dbdc'
 
 # color_end
 
