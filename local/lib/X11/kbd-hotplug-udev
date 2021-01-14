@@ -1,0 +1,37 @@
+#! /usr/bin/env python3
+
+import re, subprocess, sys
+from pyudev import Context, Monitor, MonitorObserver
+
+def hotplug_handler():
+    print("Calling keyboard.sh")
+    subprocess.run("~/.local/lib/X11/keyboard.sh", shell=True)
+    sys.stdout.flush()
+
+def is_keyboard(device):
+    if device.action != 'add':
+        return False
+    if 'ID_INPUT_KEYBOARD' not in device.properties or device.properties['ID_INPUT_KEYBOARD'] != '1':
+        return False
+    if re.search('^/sys/devices/virtual', device.sys_path):
+        return False
+    if re.search('^event[0-9]+\Z', device.sys_name):
+        return False
+    if 'ID_USB_INTERFACE_NUM' not in device.properties or device.properties['ID_USB_INTERFACE_NUM'] != '00':
+        return False
+
+    print("Added keyboard:")
+    print(device.properties['NAME'])
+    print(device.sys_path)
+
+    return True
+
+if __name__ == '__main__':
+    context = Context()
+    monitor = Monitor.from_netlink(context)
+    monitor.filter_by(subsystem='input')
+
+    hotplug_handler()
+    for device in filter(is_keyboard, iter(monitor.poll, None)):
+        hotplug_handler()
+

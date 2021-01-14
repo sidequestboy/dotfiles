@@ -1,0 +1,32 @@
+#!/bin/sh
+
+bspc config remove_unplugged_monitors true
+bspc config remove_disabled_monitors true
+
+#$HOME/.local/lib/bspwm/monitor.sh
+#$HOME/.local/lib/X11/keyboard.sh
+
+#$HOME/.local/lib/bspwm/floating-desktop.sh &
+
+bspc config pointer_modifier mod1
+bspc config focus_follows_pointer true
+xsetroot -cursor_name left_ptr &
+
+bspc config border_width         3
+bspc config window_gap          20
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config external_rules_command $HOME/.local/lib/bspwm/rules.sh
+
+bspc rule -a "Chromium" desktop='focused:^2'
+bspc rule -a "mpv" state=floating
+bspc rule -a "Show-splash-gtk" desktop='focused:^7' state=floating
+bspc rule -a "Bitwig Studio" desktop='focused:^7'
+bspc rule -a "Spotify" desktop='focused:^5'
+bspc rule -a "Steam" desktop='focused:^4'
+bspc rule -a '*' state=pseudo_tiled center=true
+#bspc rule -a "*:scratchpad" state=floating
+

@@ -1,0 +1,5 @@
+[user]
+	email = jamie.alban@gmail.com
+	name = Jamie Macdonald
+[pull]
+	rebase = false
