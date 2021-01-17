@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-current_dir=${DOT_DIR:-$(pwd)}
+current_dir=${DOT_DIR:-${HOME}/my/dotfiles}
 
 do_not_link=(\
   "config"\

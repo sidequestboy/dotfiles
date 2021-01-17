@@ -3,12 +3,12 @@
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
 
-#$HOME/.local/lib/bspwm/monitor.sh
+$HOME/.local/lib/bspwm/monitor.sh
 #$HOME/.local/lib/X11/keyboard.sh
 
 #$HOME/.local/lib/bspwm/floating-desktop.sh &
 
-bspc config pointer_modifier mod1
+bspc config pointer_modifier super
 bspc config focus_follows_pointer true
 xsetroot -cursor_name left_ptr &
 

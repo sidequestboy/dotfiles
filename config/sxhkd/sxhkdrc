@@ -3,7 +3,7 @@
 # SXHKD KEYS {{{1
 
 # reload sxhkd
-mod1 + Escape
+super + Escape
 	pkill -USR1 -x sxhkd
 
 # MEDIA KEYS {{{1
@@ -38,89 +38,79 @@ XF86AudioPlay
 # APPS {{{1
 
 # rofi
-mod1 + space
-	"/run/current-system/sw/bin/rofi -modi drun -show drun"
+super + space
+	rofi -modi drun -show drun
 
 # web
-mod1 + w
+super + shift + w
 	chromium
 
-mod1 + alt + w
+super + shift + alt + w
 	chromium --incognito
 
 # terminal / tmux
-mod1 + ctrl + Return
+super + Return
 	alacritty -d 105 45
-mod1 + Return
+super + shift + Return
 	alacritty -d 105 45 -e tmux new
-mod1 + alt + Return
+super + shift + alt + Return
 	alacritty -d 100 45 -e tmux attach
-mod1 + alt + BackSpace
+super + shift + BackSpace
 	"$HOME/.local/bin/lock.sh"
-mod1 + d
+super + shift + d
 	tdrop -n 1 -m -s dropdown alacritty --class dropdown,Alacritty
-mod1 + n
-	"$HOME/.local/bin/edit.sh"
-mod1 + y
+super + shift + y
 	tdrop -n 1 chromium --app=https://yogaanytime.com
-mod1 + g
+super + shift + g
 	tdrop -n 2 chromium --new-window https://github.com
-
-alt + t
-	tdrop current
-
-alt + space
-	"$HOME/.config/rofi/launcher.sh"
 
 # screenshot
 {alt + ,@}Print
 	maim{ , -s }"$HOME/pics/screenshots/$(date '+%F %T').png"
 
-#mod1 + y
-#	tdrop -am keepassxc
-
-mod1 + p
-	tdrop -m pavucontrol
-
 # BSPWM {{{1
 # quit/restart bspwm
-mod1 + alt + q
-	systemctl --user --wait stop bspwm.target wm.target; bspc quit
-mod1 + alt + r
+ctrl + super + Delete
+	bspc quit
+ctrl + super + r
 	bspc wm -r
 
 # close and kill
-mod1 + BackSpace
-	"$HOME/.local/lib/bspwm/quit.sh"
-mod1 + apostrophe
-	"$HOME/.local/lib/bspwm/quit.sh"
+super + {_,shift + }w
+	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
-mod1 + m
+super + m
 	bspc desktop -l next
 
 # set the window state
-mod1 + {t,alt + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + s
+	bspc node -t ~floating
+
+super + t
+	bspc node -t ~tiled
+
+super + f
+	bspc node -t ~fullscreen
 
 # set the node flags
-mod1 + alt + {m,x,y,z}
+super + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
 # focus/swap the node in the given direction
-mod1 + {_,alt + }{h,j,k,l}
+super + {_,alt + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-mod1 + {comma,period}
+super + {comma,period}
 	bspc node -f @{parent,brother}
 
 # focus the next/previous node in the current desktop
-alt + {n,p}
+super + {n,p}
 	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
-mod1 + bracket{left,right}
+super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
@@ -128,42 +118,32 @@ alt + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus or send to the given desktop
-mod1 + {1-9,0}
+super + {1-9,0}
 	bspc desktop -f 'focused:^{1-9,10}'
 
-mod1 + alt + {1-9,0}
+super + alt + {1-9,0}
 	bspc node -d 'focused:^{1-9,10}' --follow
 
-mod1 + alt + grave
+super + alt + grave
 	bspc node -m any.!focused --follow $($HOME/.local/lib/bspwm/node_defaults.sh)
 
-# focus or send to the given desktop
-#mod1 + ctrl + {_,alt + }{1-9,0}
-#	bspc {desktop -f,node -d} 'HDMI1:^{1-9,10}'
-
-mod1 + grave
+super + grave
 	bspc monitor -f any.!focused
 
-# mod4 + 1
-# 	bspc monitor -f HDMI1
-#
-# mod4 + 2
-# 	bspc monitor -f eDP1
-
 # preselect the direction
-mod1 + ctrl + {h,j,k,l}
+super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
-mod1 + ctrl + {1-9}
+super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
-mod1 + ctrl + space
+super + ctrl + space
 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
-mod1 + ctrl + shift + space
+super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
@@ -188,58 +168,58 @@ alt + mod4 + {h,j,k,l}
 #	echo scroll up press>> ~/mouse.txt
 #
 
-mod1 + @button1
+super + @button1
 	bspc move-start &; xdotool mousedown 1
 
 # DWM-specific calls {{{1
 # TODO: add dwmc patch
-#mod1 + l
+#super + l
 #	xsetroot -name "fsignal:focusstack-next"
-#mod1 + h
+#super + h
 #	xsetroot -name "fsignal:focusstack-prev"
-#mod1 + period
+#super + period
 #	xsetroot -name "fsignal:focusmon-next"
-#mod1 + comma
+#super + comma
 #	xsetroot -name "fsignal:focusmon-prev"
-#mod1 + i
+#super + i
 #	xsetroot -name "fsignal:nmaster-inc"
-#mod1 + d
+#super + d
 #	xsetroot -name "fsignal:nmaster-dec"
-#mod1 + BackSpace
+#super + BackSpace
 #	xsetroot -name "fsignal:killclient"
-#mod1 + r
+#super + r
 #	xsetroot -name "fsignal:rotate-down"
-#mod1 + alt + r
+#super + alt + r
 #	xsetroot -name "fsignal:rotate-up"
-#mod1 + alt + q
+#super + alt + q
 #	$HOME/.local/bin/stopx
-#mod1 + minus
+#super + minus
 #	xsetroot -name "fsignal:gaps-dec"
-#mod1 + plus
+#super + plus
 #	xsetroot -name "fsignal:gaps-inc"
-#mod1 + equal
+#super + equal
 #	xsetroot -name "fsignal:gaps-default"
-#mod1 + t
+#super + t
 #	xsetroot -name "fsignal:layout-tile"
-#mod1 + f
+#super + f
 #	xsetroot -name "fsignal:layout-float"
-#mod1 + m
+#super + m
 #	xsetroot -name "fsignal:layout-monocle"
-#mod1 + c
+#super + c
 #	xsetroot -name "fsignal:layout-cmaster"
-#mod1 + alt + c
+#super + alt + c
 #	xsetroot -name "fsignal:layout-cfmaster"
-#mod1 + k
+#super + k
 #	xsetroot -name "fsignal:mfact-inc"
-#mod1 + j
+#super + j
 #	xsetroot -name "fsignal:mfact-dec"
-#mod1 + b
+#super + b
 #	xsetroot -name "fsignal:togglebar"
-#mod1 + space
+#super + space
 #	xsetroot -name "fsignal:togglefloat"
-#mod1 + grave
+#super + grave
 #	xsetroot -name "fsignal:togglescratch"
-#mod1 + z
+#super + z
 #	xsetroot -name "fsignal:zoom"
 # }}}
 
