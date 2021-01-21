@@ -4,6 +4,10 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  imports = [
+    ./programs/xmonad/default.nix
+  ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "jamie";
@@ -13,6 +17,11 @@
     
     
   ];
+
+  programs.rofi = {
+    enable = true;
+    terminal = "${pkgs.alacritty}/bin/alacritty";
+  };
 
   programs.git = {
     enable = true;

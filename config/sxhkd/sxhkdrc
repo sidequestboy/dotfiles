@@ -80,8 +80,21 @@ super + {_,shift + }w
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
+#super + m
+#	bspc desktop -l next
+
 super + m
-	bspc desktop -l next
+	for node_i in $(bspc query -N -n '.!focused.local.window');  \
+	do \
+	bspc node $node_i --flag hidden; \
+	done
+
+# hide all unfocused windows
+super + shift + m
+	for node_i in $(bspc query -N -n '.!focused.local.window');  \
+	do \
+	bspc node $node_i --flag hidden=on; \
+	done
 
 # set the window state
 super + s
@@ -94,8 +107,8 @@ super + f
 	bspc node -t ~fullscreen
 
 # set the node flags
-super + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+#super + {m,x,y,z}
+#	bspc node -g {marked,locked,sticky,private}
 
 # focus/swap the node in the given direction
 super + {_,alt + }{h,j,k,l}
@@ -107,7 +120,12 @@ super + {comma,period}
 
 # focus the next/previous node in the current desktop
 super + {n,p}
-	bspc node -f {next,prev}.local
+	bspc node -f {next,prev}.local.window
+
+#	bspc node {next,prev}.local.window --flag hidden=off && bspc node -f {next,prev}.local.window && bspc node {prev,next}.local.window --flag hidden=on
+
+super + shift + h
+	bspc node --flag hidden
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
