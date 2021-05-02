@@ -1,5 +1,5 @@
 #!/bin/sh
-install_dir="$XDG_CONFIG_HOME/tmux/plugins"
+install_dir="$HOME/.tmux/plugins"
 
 if [ ! -d "$install_dir" ]
 then

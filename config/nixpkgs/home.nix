@@ -2,10 +2,11 @@
 
 {
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  #programs.home-manager.enable = true;
 
   imports = [
-    ./programs/xmonad/default.nix
+    #./programs/xmonad/default.nix
+    ./dconf.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -13,7 +14,8 @@
   home.username = "jamie";
   home.homeDirectory = "/home/jamie";
 
-  home.packages = [ 
+  home.packages = with pkgs; [ 
+    gnome3.gnome-tweak-tool
     
     
   ];
@@ -31,9 +33,6 @@
 
   programs.neovim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
-    ];
   };
 
   programs.zsh = {
@@ -48,7 +47,7 @@
       LC_CTYPE = "en_US.UTF-8";
       LESS = "--mouse --wheel-lines=3";
       NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
-      PATH = "~/.local/bin:$PATH";
+      PATH = "$HOME/.npm-global/bin:$HOME/.local/bin:$PATH";
       TERMINAL = "alacritty";
     };
     autocd = true;

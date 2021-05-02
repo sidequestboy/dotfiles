@@ -6,6 +6,7 @@ do_not_link=(\
   "config"\
   "link.sh"\
   "local"\
+  "xmonad"\
 )
 
 element_in ()
