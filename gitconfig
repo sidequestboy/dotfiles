@@ -1,5 +1,7 @@
+# This is Git's per-user configuration file.
 [user]
-	email = jamie.alban@gmail.com
+# Please adapt and uncomment the following lines:
 	name = Jamie Macdonald
-[pull]
-	rebase = false
+	email = jamie.alban@gmail.com
+[core]
+	excludesfile = /Users/jamie/.gitignore

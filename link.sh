@@ -2,11 +2,21 @@
 
 current_dir=${DOT_DIR:-${HOME}/my/dotfiles}
 
+platform=$(uname)
+
+# files to not link, folders to recurse into instead of linking
 do_not_link=(\
   "config"\
   "link.sh"\
   "local"\
   "xmonad"\
+)
+
+macos_files=(\
+  "config/nvim"\
+  "gitconfig"\
+  "tmux.conf"\
+  "zshrc"\
 )
 
 element_in ()
@@ -24,9 +34,9 @@ create_link()
 {
   local file_abspath="${1}"
   local file_relpath=${file_abspath:${#current_dir}+1}
-  local file_name=$(echo "${file_abspath}" | rev | cut -d'/' -f 1 | rev)
+  local file_name=$(basename "${file_abspath}")
   local link_location=${HOME}/.${file_relpath}
-  local link_parent_dir=$(echo "${link_location}" | rev | cut -b -${#file_name} --complement | rev)
+  local link_parent_dir=$(dirname "${link_location}")
 
   # check if parent directory exists,
   #   if not, prompt to create it y/n
@@ -54,13 +64,13 @@ create_link()
   # check if symlink exists
   if [[ -L "${link_location}" ]]
   then
-    if [[ $(readlink -f "${link_location}") == "${file_abspath}" ]]
+    if [[ $(readlink "${link_location}") == "${file_abspath}" ]]
     then
       echo "Link exists and is correct \"${link_location}\" -> \"${file_abspath}\""
       return 0
     else
       # link exists and is wrong - prompt to correct. if no, return 1
-      echo "Link exists but points to wrong place: \"${link_location}\" -> \"$(readlink -f "${link_location}")"
+      echo "Link exists but points to wrong place: \"${link_location}\" -> \"$(readlink "${link_location}")\""
       echo "Fix it? y/n"
       read ans
       if [[ ${ans} == "y" ]]
@@ -79,23 +89,33 @@ create_link()
 
 link()
 {
-  for file in $(ls ${1})
-  do
-    file_abspath="${1}/${file}"
-    file_relpath=${file_abspath:${#current_dir}+1}
-    echo $file_relpath
-    if element_in "${file_relpath}" "${do_not_link[@]}"
+  local file_abspath="${1}"
+  local file_relpath=${file_abspath:${#current_dir}+1}
+  local file
+  if element_in "${file_relpath}" "${do_not_link[@]}"
+  then
+    # skip if file, recurse if directory
+    if [[ -d ${file_abspath} ]]
     then
-      # skip if file, recurse if directory
-      if [[ -d ${file_abspath} ]]
-      then
-        link "${file_abspath}"
-      fi
-    else
-      create_link "${file_abspath}"
+      for file in $(ls ${file_abspath})
+      do
+        link "${file}"
+      done
     fi
-  done
+  else
+    create_link "${file_abspath}"
+  fi
 }
 
-link "${current_dir}"
-
+if [[ ${platform} == "Darwin" ]]
+then
+  for file in "${macos_files[@]}"
+  do
+    link "${current_dir}/${file}"
+  done
+else
+  for file in $(ls ${1})
+  do
+    link "${current_dir}"
+  done
+fi
