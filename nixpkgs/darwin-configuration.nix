@@ -18,6 +18,7 @@
     gnused
     ripgrep
     nodejs
+    vscode
   ];
 
   home-manager.users.jamie = { pkgs, ... }: {
@@ -35,6 +36,8 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+
+  nixpkgs.config.allowUnfree = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

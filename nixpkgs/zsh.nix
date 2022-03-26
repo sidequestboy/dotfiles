@@ -15,7 +15,6 @@
       LESS = "-R --mouse --wheel-lines=3";
       NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
       TERMINAL = "alacritty";
-      PATH = "$HOME/.local/bin:$PATH:$NPM_PACKAGES/bin";
       MANPATH = "$\{MANPATH-$(manpath)\}:$NPM_PACKAGES/share/man";
     };
     autocd = true;
@@ -44,6 +43,15 @@
       ue = "systemctl --user edit --full";
     };
     initExtra = ''
+      path=("$HOME/.nix-profile/bin" $path)
+      path=("$HOME/.local/bin" $path)
+      path=("/opt/homebrew/opt/openjdk/bin" $path)
+      path=("$HOME/.cargo/bin" $path)
+      path=("$HOME/.gem/ruby/3.0.0/bin" $path)
+      path=("/opt/homebrew/opt/ruby/bin" $path)
+      path=("/nix/var/nix/profiles/default/bin" $path)
+      path=("/run/current-system/sw/bin" $path)
+      export PATH
       if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
         exec tmux
       fi

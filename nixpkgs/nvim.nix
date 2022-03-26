@@ -29,6 +29,12 @@
       {
         plugin = goyo;
         config = ''
+          if has("unix")
+            let s:uname = system("uname -s")
+            if s:uname == "Darwin"
+              let g:coc_node_path = '/run/current-system/sw/bin/node'
+            endif
+          endif
           function! s:goyo_enter()
             if executable('tmux') && strlen($TMUX)
               silent !tmux set status off
