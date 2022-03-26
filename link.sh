@@ -13,11 +13,9 @@ do_not_link=(\
 )
 
 macos_files=(\
-  "config/nvim"\
-  "gitconfig"\
   "local/lib/tmux"\
+  "nixpkgs/darwin-configuration.nix"\
   "tmux.conf"\
-  "zshrc"\
 )
 
 element_in ()

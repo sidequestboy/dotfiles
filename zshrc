@@ -1,8 +1,10 @@
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="$HOME/.nix-profile/bin:$PATH"
+path=("/opt/homebrew/opt/ruby/bin" $path)
+path=("$HOME/.gem/ruby/3.0.0/bin" $path)
+path=("$HOME/.cargo/bin" $path)
+path=("/opt/homebrew/opt/openjdk/bin" $path)
+export PATH
+
+export EDITOR=nvim
 
 # pure prompt
 if [[ ! -d "$HOME/.zsh" ]]
