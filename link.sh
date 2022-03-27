@@ -14,7 +14,7 @@ do_not_link=(\
 
 macos_files=(\
   "local/lib/tmux"\
-  "nixpkgs/darwin-configuration.nix"\
+  "nixpkgs"\
   "tmux.conf"\
 )
 

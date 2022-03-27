@@ -25,7 +25,7 @@
     imports = [
       ./git.nix
       ./nvim.nix
-      ./zsh.nix
+      ./zsh-macos.nix
     ];
   };
 
@@ -36,6 +36,8 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+
+  programs.zsh.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
