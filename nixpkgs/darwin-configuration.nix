@@ -18,7 +18,7 @@
     gnused
     ripgrep
     nodejs
-    vscode
+    fd
   ];
 
   home-manager.users.jamie = { pkgs, ... }: {

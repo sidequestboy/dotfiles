@@ -24,6 +24,8 @@
     };
     initExtra = ''
       path=("$HOME/.local/bin" $path)
+      path=("$HOME/.emacs.d/bin" $path)
+      path=("/opt/homebrew/bin" $path)
       path=("/opt/homebrew/opt/openjdk/bin" $path)
       path=("$HOME/.cargo/bin" $path)
       path=("$HOME/.gem/ruby/3.0.0/bin" $path)

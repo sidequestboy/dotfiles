@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-current_dir=${DOT_DIR:-${HOME}/my/dotfiles}
+current_dir=$(pwd)
 
 platform=$(uname)
 
