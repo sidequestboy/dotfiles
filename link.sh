@@ -13,9 +13,11 @@ do_not_link=(\
 )
 
 macos_files=(\
+  "config/nvim"\
   "local/lib/tmux"\
-  "nixpkgs"\
   "tmux.conf"\
+  "zshrc"\
+  "zprofile"\
 )
 
 element_in ()

@@ -24,8 +24,6 @@
   home-manager.users.jamie = { pkgs, ... }: {
     imports = [
       ./git.nix
-      ./nvim.nix
-      ./zsh-macos.nix
     ];
   };
 
