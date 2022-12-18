@@ -1,11 +1,7 @@
-path=("/opt/homebrew/opt/ruby/bin" $path)
-path=("$HOME/.gem/ruby/3.0.0/bin" $path)
-path=("$HOME/.cargo/bin" $path)
-path=("/opt/homebrew/opt/openjdk/bin" $path)
 path=("$HOME/.local/bin" $path)
-path=("/opt/homebrew/opt/openjdk/bin" $path)
 path=("$HOME/.cargo/bin" $path)
-path=("$HOME/.gem/ruby/3.0.0/bin" $path)
+path=("$HOME/.gem/ruby/3.1.0/bin" $path)
+path=("/opt/homebrew/opt/openjdk/bin" $path)
 path=("/opt/homebrew/opt/ruby/bin" $path)
 path=("/opt/homebrew/bin" $path)
 export PATH
@@ -23,6 +19,7 @@ export LESS="-R --mouse --wheel-lines=3"
 export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
 export TERMINAL="alacritty"
 export NPM_PACKAGES="$HOME/.npm-packages"
+export CC="gcc-12"
 
 alias ls="ls --color=auto"
 alias l="ls"
