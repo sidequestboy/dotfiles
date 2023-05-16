@@ -9,9 +9,9 @@ path=("/opt/homebrew/opt/ruby/bin" $path)
 path=("/opt/homebrew/bin" $path)
 export PATH
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-	exec tmux
-fi
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#	exec tmux attach
+#fi
 
 export EDITOR="nvim"
 export BROWSER="chromium"
