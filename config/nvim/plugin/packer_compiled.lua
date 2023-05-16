@@ -104,6 +104,12 @@ _G.packer_plugins = {
     path = "/Users/jamie/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["emmet-ls"] = {
+    config = { "\27LJ\2\n¸\3\0\0\t\0\23\0\0306\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0026\2\3\0009\2\4\0029\2\5\0029\2\6\2B\2\1\0029\3\a\0029\3\b\0039\3\t\3+\4\2\0=\4\n\0039\3\v\0009\3\f\0035\5\r\0=\2\14\0055\6\15\0=\6\16\0055\6\20\0005\a\18\0005\b\17\0=\b\19\a=\a\21\6=\6\22\5B\3\2\1K\0\1\0\17init_options\thtml\1\0\0\foptions\1\0\0\1\0\1\16bem.enabled\2\14filetypes\1\r\0\0\bcss\neruby\thtml\15javascript\20javascriptreact\tless\tsass\tscss\vsvelte\bpug\20typescriptreact\bvue\17capabilities\1\0\0\nsetup\remmet_ls\19snippetSupport\19completionItem\15completion\17textDocument\29make_client_capabilities\rprotocol\blsp\bvim\22lspconfig/configs\14lspconfig\frequire\0" },
+    loaded = true,
+    path = "/Users/jamie/.local/share/nvim/site/pack/packer/start/emmet-ls",
+    url = "https://github.com/aca/emmet-ls"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/jamie/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -129,18 +135,15 @@ _G.packer_plugins = {
     path = "/Users/jamie/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  neorg = {
-    config = { "\27LJ\2\nò\2\0\0\a\0\19\0\0256\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\17\0005\3\3\0004\4\0\0=\4\4\0035\4\b\0005\5\6\0005\6\5\0=\6\a\5=\5\t\4=\4\n\0035\4\f\0005\5\v\0=\5\t\4=\4\r\0035\4\15\0005\5\14\0=\5\t\4=\4\16\3=\3\18\2B\0\2\1K\0\1\0\tload\1\0\0\24core.norg.concealer\1\0\0\1\0\1\vpreset\fdiamond\18core.gtd.base\1\0\0\1\0\1\14workspace\16example_gtd\21core.norg.dirman\vconfig\1\0\0\15workspaces\1\0\0\1\0\3\16example_gtd+~/my/code/other/example_workspaces/gtd\bgtd\19~/my/notes/gtd\thome\20~/my/notes/home\18core.defaults\1\0\0\nsetup\nneorg\frequire\0" },
-    load_after = {},
-    loaded = true,
-    needs_bufread = true,
-    path = "/Users/jamie/.local/share/nvim/site/pack/packer/opt/neorg",
-    url = "https://github.com/nvim-neorg/neorg"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/jamie/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/Users/jamie/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -188,27 +191,32 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jamie/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-prettier"] = {
+    loaded = true,
+    path = "/Users/jamie/.local/share/nvim/site/pack/packer/start/vim-prettier",
+    url = "https://github.com/prettier/vim-prettier"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/Users/jamie/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: rose-pine
-time([[Config for rose-pine]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
-time([[Config for rose-pine]], false)
 -- Config for: nvim-tmux-navigation
 time([[Config for nvim-tmux-navigation]], true)
 try_loadstring("\27LJ\2\nÊ\2\0\0\6\0\16\0#6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\3\0B\1\2\0016\1\4\0009\1\5\0019\1\6\1'\3\a\0'\4\b\0009\5\t\0B\1\4\0016\1\4\0009\1\5\0019\1\6\1'\3\a\0'\4\n\0009\5\v\0B\1\4\0016\1\4\0009\1\5\0019\1\6\1'\3\a\0'\4\f\0009\5\r\0B\1\4\0016\1\4\0009\1\5\0019\1\6\1'\3\a\0'\4\14\0009\5\15\0B\1\4\1K\0\1\0\26NvimTmuxNavigateRight\n<C-l>\23NvimTmuxNavigateUp\n<C-k>\25NvimTmuxNavigateDown\n<C-j>\25NvimTmuxNavigateLeft\n<C-h>\6n\bset\vkeymap\bvim\1\0\1\24disable_when_zoomed\2\nsetup\25nvim-tmux-navigation\frequire\0", "config", "nvim-tmux-navigation")
 time([[Config for nvim-tmux-navigation]], false)
--- Load plugins in order defined by `after`
-time([[Sequenced loading]], true)
-vim.cmd [[ packadd nvim-treesitter ]]
-vim.cmd [[ packadd neorg ]]
-
--- Config for: neorg
-try_loadstring("\27LJ\2\nò\2\0\0\a\0\19\0\0256\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\17\0005\3\3\0004\4\0\0=\4\4\0035\4\b\0005\5\6\0005\6\5\0=\6\a\5=\5\t\4=\4\n\0035\4\f\0005\5\v\0=\5\t\4=\4\r\0035\4\15\0005\5\14\0=\5\t\4=\4\16\3=\3\18\2B\0\2\1K\0\1\0\tload\1\0\0\24core.norg.concealer\1\0\0\1\0\1\vpreset\fdiamond\18core.gtd.base\1\0\0\1\0\1\14workspace\16example_gtd\21core.norg.dirman\vconfig\1\0\0\15workspaces\1\0\0\1\0\3\16example_gtd+~/my/code/other/example_workspaces/gtd\bgtd\19~/my/notes/gtd\thome\20~/my/notes/home\18core.defaults\1\0\0\nsetup\nneorg\frequire\0", "config", "neorg")
-
-time([[Sequenced loading]], false)
+-- Config for: rose-pine
+time([[Config for rose-pine]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
+time([[Config for rose-pine]], false)
+-- Config for: emmet-ls
+time([[Config for emmet-ls]], true)
+try_loadstring("\27LJ\2\n¸\3\0\0\t\0\23\0\0306\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0026\2\3\0009\2\4\0029\2\5\0029\2\6\2B\2\1\0029\3\a\0029\3\b\0039\3\t\3+\4\2\0=\4\n\0039\3\v\0009\3\f\0035\5\r\0=\2\14\0055\6\15\0=\6\16\0055\6\20\0005\a\18\0005\b\17\0=\b\19\a=\a\21\6=\6\22\5B\3\2\1K\0\1\0\17init_options\thtml\1\0\0\foptions\1\0\0\1\0\1\16bem.enabled\2\14filetypes\1\r\0\0\bcss\neruby\thtml\15javascript\20javascriptreact\tless\tsass\tscss\vsvelte\bpug\20typescriptreact\bvue\17capabilities\1\0\0\nsetup\remmet_ls\19snippetSupport\19completionItem\15completion\17textDocument\29make_client_capabilities\rprotocol\blsp\bvim\22lspconfig/configs\14lspconfig\frequire\0", "config", "emmet-ls")
+time([[Config for emmet-ls]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

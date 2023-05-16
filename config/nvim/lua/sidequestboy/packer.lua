@@ -13,13 +13,39 @@ return require('packer').startup(function(use)
 		config = function()
 			vim.cmd('colorscheme rose-pine')
 		end
-	})
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
-	}
+    })
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+    use {
+        'aca/emmet-ls',
+        config = function()
+            local lspconfig = require('lspconfig')
+            local configs = require('lspconfig/configs')
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+            lspconfig.emmet_ls.setup({
+                -- on_attach = on_attach,
+                capabilities = capabilities,
+                filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+                init_options = {
+                    html = {
+                        options = {
+                            -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                            ["bem.enabled"] = true,
+                        },
+                    },
+                }
+            })
+        end
+    }
+    use('norcalli/nvim-colorizer.lua')
+    use('prettier/vim-prettier')
 	use('theprimeagen/harpoon')
 	use('mbbill/undotree')
+    use('tpope/vim-surround')
 	use('tpope/vim-fugitive')
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -41,39 +67,6 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
         }
-    }
-    use {
-        "nvim-neorg/neorg",
-        --ft = "norg",
-        after = "nvim-treesitter",
-        run = ":Neorg sync-parsers",
-        config = function()
-            require('neorg').setup {
-                load = {
-                    ["core.defaults"] = {},
-                    ["core.norg.dirman"] = {
-                        config = {
-                            workspaces = {
-                                home = "~/my/notes/home",
-                                gtd = "~/my/notes/gtd",
-                                example_gtd = "~/my/code/other/example_workspaces/gtd",
-                            }
-                        }
-                    },
-                    ["core.gtd.base"] = {
-                        config = {
-                            workspace = "example_gtd",
-                        },
-                    },
-                    ["core.norg.concealer"] = {
-                        config = {
-                            preset = "diamond",
-                        }
-                    },
-                }
-            }
-        end,
-        requires = "nvim-lua/plenary.nvim"
     }
     use { 
         "alexghergh/nvim-tmux-navigation",

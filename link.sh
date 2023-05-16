@@ -14,6 +14,7 @@ do_not_link=(\
 
 macos_files=(\
   "config/nvim"\
+  "config/alacritty"\
   "gitconfig"\
   "local/lib/tmux"\
   "tmux.conf"\

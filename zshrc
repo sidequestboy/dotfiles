@@ -1,6 +1,9 @@
+path=("/Applications/Docker.app/Contents/Resources/bin/" $path)
 path=("$HOME/.local/bin" $path)
 path=("$HOME/.cargo/bin" $path)
 path=("$HOME/.gem/ruby/3.1.0/bin" $path)
+path=("$HOME/.emacs.d/bin" $path)
+path=("/usr/local/bin" $path)
 path=("/opt/homebrew/opt/openjdk/bin" $path)
 path=("/opt/homebrew/opt/ruby/bin" $path)
 path=("/opt/homebrew/bin" $path)
@@ -19,7 +22,7 @@ export LESS="-R --mouse --wheel-lines=3"
 export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
 export TERMINAL="alacritty"
 export NPM_PACKAGES="$HOME/.npm-packages"
-export CC="gcc-12"
+#export CC="gcc-12"
 
 alias ls="ls --color=auto"
 alias l="ls"
@@ -37,18 +40,6 @@ alias u="systemctl --user"
 alias udr="systemctl --user daemon-reload"
 alias us="systemctl --user status"
 alias ue="systemctl --user edit --full"
-
-# pure prompt
-if [[ ! -d "$HOME/.zsh" ]]
-then
-  mkdir -p "$HOME/.zsh"
-fi
-if [[ ! -d "$HOME/.zsh/pure" ]]
-then
-  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-fi
-
-fpath+=$HOME/.zsh/pure
 
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
@@ -73,11 +64,20 @@ ls $LS_DEFAULT_ARGS
 __git_files () {
   _wanted files expl 'local files' _files
 }
-# workaround https://github.com/ohmyzsh/ohmyzsh/issues/8751
-_systemctl_unit_state() {
-typeset -gA _sys_unit_state
-_sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') ) }
-zstyle :prompt:pure:git:stash show yes
+eval "$(starship init zsh)"
 
-autoload -U promptinit; promptinit
-prompt pure
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jamie/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jamie/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/jamie/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jamie/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
