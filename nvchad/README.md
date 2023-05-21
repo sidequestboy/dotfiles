@@ -1,1 +1,0 @@
-# sidequestboy's nvchad config
