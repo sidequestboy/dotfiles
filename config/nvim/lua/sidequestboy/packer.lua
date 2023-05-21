@@ -41,6 +41,10 @@ return require('packer').startup(function(use)
             })
         end
     }
+    use {
+	"windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
     use('norcalli/nvim-colorizer.lua')
     use('prettier/vim-prettier')
 	use('theprimeagen/harpoon')

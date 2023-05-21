@@ -1,8 +1,11 @@
 import:
-  - ~/.config/alacritty/themes/themes/rose-pine-moon.yaml
+  - ~/.config/alacritty/themes/themes/dracula.yaml
+
+env:
+  TERM: alacritty-direct
 
 window:
-  opacity: 0.95
+  opacity: 0.99
   padding:
     x: 3
     y: 3
@@ -12,7 +15,12 @@ window:
 font:
   normal:
     family: FiraCode Nerd Font
-    style: Retina
-  size: 13.0
+    style: Light
+  italic:
+    family: OperatorMono Nerd Font
+    style: Extra Light Italic
+  size: 14.0
 key_bindings:
   - { key: S, mods: Command, chars: "\e:w\n" }
+  - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" }
+  - { key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~" }

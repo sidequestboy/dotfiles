@@ -23,6 +23,7 @@ export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
 export TERMINAL="alacritty"
 export NPM_PACKAGES="$HOME/.npm-packages"
 
+alias ls="ls --color=auto"
 alias l="ls"
 alias la="ls -A"
 alias ll="ls -Al"
