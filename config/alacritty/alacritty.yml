@@ -5,7 +5,7 @@ env:
   TERM: alacritty-direct
 
 window:
-  opacity: 0.99
+  opacity: 1
   padding:
     x: 3
     y: 3
@@ -18,7 +18,7 @@ font:
     style: Light
   italic:
     family: OperatorMono Nerd Font
-    style: Extra Light Italic
+    style: ExtraLight Italic
   size: 14.0
 key_bindings:
   - { key: S, mods: Command, chars: "\e:w\n" }
