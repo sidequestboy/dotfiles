@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/themes/dracula.yaml
+  - ~/.config/alacritty/themes/themes/omni.yaml
 
 env:
   TERM: alacritty-direct
