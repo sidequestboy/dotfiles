@@ -1,12 +1,15 @@
-path=("/Applications/Docker.app/Contents/Resources/bin/" $path)
-path=("$HOME/.local/bin" $path)
-path=("$HOME/.cargo/bin" $path)
-path=("$HOME/.gem/ruby/3.1.0/bin" $path)
-path=("$HOME/.emacs.d/bin" $path)
 path=("/usr/local/bin" $path)
 path=("/opt/homebrew/opt/openjdk/bin" $path)
 path=("/opt/homebrew/opt/ruby/bin" $path)
 path=("/opt/homebrew/bin" $path)
+path=("./node_modules/.bin" $path)
+path=("/Applications/Docker.app/Contents/Resources/bin/" $path)
+path=("$HOME/.local/bin" $path)
+path=("$HOME/.gem/ruby/3.1.0/bin" $path)
+path=("$HOME/.luarocks/bin" $path)
+path=("$HOME/.emacs.d/bin" $path)
+path=("$HOME/.cargo/bin" $path)
+path=("$HOME/my/code/projects/scale-tray/llvm-project/build/bin" $path)
 export PATH
 
 #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
@@ -32,6 +35,7 @@ alias cheat="cheat --color"
 alias ch="cheat"
 alias e="$EDITOR"
 
+bindkey -v
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 bindkey '^?' backward-delete-char

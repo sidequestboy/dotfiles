@@ -1,5 +1,6 @@
 import:
-  - ~/.config/alacritty/themes/themes/omni.yaml
+  # - ~/.config/alacritty/themes/themes/omni.yaml
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
 
 env:
   TERM: alacritty-direct
@@ -19,8 +20,10 @@ font:
   italic:
     family: OperatorMono Nerd Font
     style: ExtraLight Italic
-  size: 14.0
+  size: 14.5
 key_bindings:
   - { key: S, mods: Command, chars: "\e:w\n" }
   - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" }
   - { key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~" }
+mouse:
+  hide_when_typing: true
