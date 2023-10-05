@@ -49,6 +49,14 @@ _history-incremental-search-backward () {
 zle .history-incremental-search-backward $BUFFER
 }
 zle -N history-incremental-search-backward _history-incremental-search-backward
+
+# case insensitive completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 bindkey '^R' history-incremental-search-backward
 bindkey -M isearch '^S' history-incremental-search-forward
 function chpwd() {
