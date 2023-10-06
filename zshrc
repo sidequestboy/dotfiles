@@ -26,6 +26,10 @@ export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
 export TERMINAL="alacritty"
 export NPM_PACKAGES="$HOME/.npm-packages"
 
+if [[ -e "$HOME/.secrets.zsh" ]]; then
+  source "$HOME/.secrets.zsh"
+fi
+
 alias ls="ls --color=auto"
 alias l="ls"
 alias la="ls -A"

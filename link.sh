@@ -17,6 +17,7 @@ macos_files=(\
   "config/alacritty"\
   "gitconfig"\
   "local/lib/tmux"\
+  "secrets.zsh"\
   "tmux.conf"\
   "zshrc"\
   "zprofile"\
