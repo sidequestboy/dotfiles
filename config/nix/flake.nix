@@ -2,7 +2,8 @@
 	description = "sidequestboy's darwin flake";
 
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+		# nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
 		nix-darwin.url = "github:LnL7/nix-darwin";
 		nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 		nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
@@ -23,16 +24,18 @@
            obsidian
            slack
            starship
-           karabiner-elements
            arc-browser
+           nodejs
+           typescript
+           karabiner-elements
          ];
 
       homebrew = {
         enable = true;
 	brews = [
 	  "mas"
-	  "zsh-syntax-highlighting"
 	  "zsh-autosuggestions"
+	  # "node@20"
 	];
 	casks = [
 	  "firefox"
@@ -40,6 +43,7 @@
 	  "nordvpn"
 	  "whatsapp"
 	  "todoist"
+    #"karabiner-elements"
 	];
 	masApps = {
 	  "System Color Picker" = 1545870783;
@@ -60,6 +64,19 @@
 	${pkgs.rsync}/bin/rsync $rsyncArgs "$appsSrc" "$baseDir"
       '';
 
+      networking.computerName = "meteorite";
+      networking.hostName = "meteorite";
+      networking.localHostName = "meteorite";
+
+      nix.settings.auto-optimise-store = true;
+
+      programs.nix-index.enable = true;
+      programs.zsh = {
+        enableFzfHistory = true;
+	enableFzfCompletion = true;
+	enableSyntaxHighlighting = true;
+      };
+
       environment.darwinConfig = "$HOME/.config/nix/flake.nix";
 
       system.defaults = {
@@ -69,14 +86,21 @@
 	  "${pkgs.obsidian}/Applications/Obsidian.app"
 	  "/System/Applications/Calendar.app"
 	];
+	dock.appswitcher-all-displays = true;
+	dock.autohide-delay = 0.0;
 	dock.orientation = "left";
 	finder.FXPreferredViewStyle = "clmv";
 	finder.ShowPathbar = true;
 	finder.ShowStatusBar = true;
+	finder.AppleShowAllFiles = true;
+	finder.AppleShowAllExtensions = true;
 	loginwindow.GuestEnabled = false;
 	NSGlobalDomain.AppleInterfaceStyle = "Dark";
 	NSGlobalDomain.KeyRepeat = 2;
+	NSGlobalDomain.AppleShowAllFiles = true;
       };
+
+      services.karabiner-elements.enable = true;
 
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
@@ -121,3 +145,5 @@
     darwinPackages = self.darwinConfigurations."meteorite".pkgs;
   };
 }
+
+# vim: ts=2:sw=2:expandtab
