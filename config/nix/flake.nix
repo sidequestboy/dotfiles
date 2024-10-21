@@ -43,6 +43,7 @@
 	  "System Color Picker" = 1545870783;
 	};
 	onActivation = {
+	  autoUpdate = true;
 	  upgrade = true;
 	  cleanup = "zap";
 	};
