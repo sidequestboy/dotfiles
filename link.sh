@@ -13,6 +13,7 @@ do_not_link=(\
 )
 
 macos_files=(\
+  "config/nix"\
   "config/nvim"\
   "config/alacritty"\
   "gitconfig"\
