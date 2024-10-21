@@ -1,29 +1,31 @@
 {
-  description = "sidequestboy's darwin flake";
+	description = "sidequestboy's darwin flake";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-  };
+	inputs = {
+		nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+		nix-darwin.url = "github:LnL7/nix-darwin";
+		nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+		nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+	};
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
-  let
-    configuration = { pkgs, config, lib, ... }: {
+	outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
+		let
+		configuration = { pkgs, config, lib, ... }: {
 
-      nixpkgs.config.allowUnfree = true;
+			nixpkgs.config.allowUnfree = true;
 
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.neovim
-	  pkgs.tmux
-	  pkgs.kitty
-	  pkgs.obsidian
-	  pkgs.slack
-	  pkgs.starship
-        ];
+        # List packages installed in system profile. To search by name, run:
+        # $ nix-env -qaP | grep wget
+         environment.systemPackages = with pkgs;
+         [ neovim
+           tmux
+           kitty
+           obsidian
+           slack
+           starship
+           karabiner-elements
+           arc-browser
+         ];
 
       homebrew = {
         enable = true;
@@ -57,6 +59,24 @@
 	mkdir -p "$baseDir"
 	${pkgs.rsync}/bin/rsync $rsyncArgs "$appsSrc" "$baseDir"
       '';
+
+      environment.darwinConfig = "$HOME/.config/nix/flake.nix";
+
+      system.defaults = {
+        dock.autohide = true;
+	dock.persistent-apps = [
+	  "${pkgs.kitty}/Applications/Kitty.app"
+	  "${pkgs.obsidian}/Applications/Obsidian.app"
+	  "/System/Applications/Calendar.app"
+	];
+	dock.orientation = "left";
+	finder.FXPreferredViewStyle = "clmv";
+	finder.ShowPathbar = true;
+	finder.ShowStatusBar = true;
+	loginwindow.GuestEnabled = false;
+	NSGlobalDomain.AppleInterfaceStyle = "Dark";
+	NSGlobalDomain.KeyRepeat = 2;
+      };
 
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
