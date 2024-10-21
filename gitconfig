@@ -5,3 +5,5 @@
 	email = jamie.alban@gmail.com
 [core]
 	excludesfile = /Users/jamie/.gitignore
+[push]
+	autoSetupRemote = true

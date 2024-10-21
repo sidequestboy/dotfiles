@@ -1,15 +1,6 @@
-path=("/usr/local/bin" $path)
-path=("/opt/homebrew/opt/openjdk/bin" $path)
-path=("/opt/homebrew/opt/ruby/bin" $path)
 path=("/opt/homebrew/bin" $path)
-path=("./node_modules/.bin" $path)
-path=("/Applications/Docker.app/Contents/Resources/bin/" $path)
 path=("$HOME/.local/bin" $path)
-path=("$HOME/.gem/ruby/3.1.0/bin" $path)
-path=("$HOME/.luarocks/bin" $path)
-path=("$HOME/.emacs.d/bin" $path)
 path=("$HOME/.cargo/bin" $path)
-path=("$HOME/my/code/projects/scale-tray/llvm-project/build/bin" $path)
 export PATH
 
 #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
@@ -58,8 +49,8 @@ zle -N history-incremental-search-backward _history-incremental-search-backward
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bindkey '^R' history-incremental-search-backward
 bindkey -M isearch '^S' history-incremental-search-forward
