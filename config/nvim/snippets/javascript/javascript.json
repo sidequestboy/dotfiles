@@ -1,0 +1,10 @@
+{
+  "Print to console": {
+    "prefix": "cl",
+    "scope": "javascript,typescript,javascriptreact",
+    "body": [
+      "console.log($1)"
+    ],
+    "description": "console.log"
+  }
+}
