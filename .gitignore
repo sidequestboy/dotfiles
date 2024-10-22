@@ -2,4 +2,3 @@ packer_compiled.lua
 config/alacritty/catppuccin
 secrets.zsh
 .DS_Store
-flake.lock
