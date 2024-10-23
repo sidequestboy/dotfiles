@@ -73,9 +73,9 @@ return {
     opts = {
       default_merge_method = 'rebase',
       default_to_projects_v2 = true,
-      -- suppress_missing_scope = {
-      --   projects_v2 = true,
-      -- },
+      suppress_missing_scope = {
+        projects_v2 = true,
+      },
     },
     config = function(_, opts)
       require('octo').setup(opts)
@@ -164,7 +164,7 @@ return {
   },
   {
     'declancm/maximize.nvim',
-    opts = { default_keymaps = false },
+    opts = {},
     config = function(_, opts)
       require('maximize').setup(opts)
       vim.keymap.set('n', '<leader>o', function()
