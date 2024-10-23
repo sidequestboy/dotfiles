@@ -66,7 +66,7 @@ in
     dock = {
       enable = true;
       entries = [
-        { path = "/Applications/Slack.app/"; }
+        { path = "${pkgs.slack}/Applications/Slack.app/"; }
         { path = "/System/Applications/Messages.app/"; }
         { path = "/System/Applications/Facetime.app/"; }
         { path = "${pkgs.kitty}/Applications/kitty.app/"; }

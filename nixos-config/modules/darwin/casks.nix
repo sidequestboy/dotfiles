@@ -15,6 +15,7 @@ _:
   # Utility Tools
   "bitwarden"
   "nordvpn"
+  "scroll-reverser"
 
   # Entertainment Tools
   "vlc"

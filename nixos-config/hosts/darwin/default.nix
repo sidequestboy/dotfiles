@@ -80,7 +80,6 @@ let user = "jamie"; in
       };
 
       finder = {
-        _FXShowPosixPathInTitle = true;
         ShowStatusBar = true;
         ShowPathbar = true;
       };
