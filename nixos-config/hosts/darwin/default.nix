@@ -14,6 +14,12 @@ let user = "jamie"; in
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
+  services.karabiner-elements.enable = true;
+
+  networking.computerName = "meteorite";
+  networking.hostName = "meteorite";
+  networking.localHostName = "meteorite";
+
   # Setup user, packages, programs
   nix = {
     package = pkgs.nix;
@@ -48,6 +54,7 @@ let user = "jamie"; in
 
     defaults = {
       NSGlobalDomain = {
+        AppleInterfaceStyle = "Dark";
         AppleShowAllExtensions = true;
         ApplePressAndHoldEnabled = false;
 
@@ -63,20 +70,23 @@ let user = "jamie"; in
       };
 
       dock = {
-        autohide = false;
+        appswitcher-all-displays = true;
+        autohide = true;
+        autohide-delay = 0.0;
         show-recents = false;
         launchanim = true;
-        orientation = "bottom";
+        orientation = "left";
         tilesize = 48;
       };
 
       finder = {
-        _FXShowPosixPathInTitle = false;
+        _FXShowPosixPathInTitle = true;
+        ShowStatusBar = true;
+        ShowPathbar = true;
       };
 
       trackpad = {
         Clicking = true;
-        TrackpadThreeFingerDrag = true;
       };
     };
   };

@@ -7,8 +7,8 @@ _:
 
   # Communication Tools
   "discord"
-  "notion"
-  "slack"
+  #"notion"
+  #"slack"
   "whatsapp"
   "zoom"
 

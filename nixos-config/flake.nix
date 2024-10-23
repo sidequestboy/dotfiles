@@ -3,6 +3,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
     agenix.url = "github:ryantm/agenix";
+    mac-app-util.url = "github:hraban/mac-app-util";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
       url = "github:LnL7/nix-darwin/master";
@@ -32,7 +33,7 @@
       flake = false;
     };
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs, disko, agenix, secrets } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, mac-app-util, nixpkgs, disko, agenix, secrets } @inputs:
     let
       user = "jamie";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -83,12 +84,22 @@
           inherit system;
           specialArgs = inputs;
           modules = [
+            mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
+            (
+              { pkgs, config, inputs, ... }:
+              {
+                home-manager.users.${user}.imports = [
+                  mac-app-util.homeManagerModules.default
+                ];
+              }
+            )
             nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
                 inherit user;
                 enable = true;
+                enableRosetta = true;
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;

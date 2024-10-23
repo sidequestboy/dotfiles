@@ -9,4 +9,6 @@ shared-packages ++ [
   kitty
   obsidian
   slack
+  spotify
+  zsh-autosuggestions
 ]

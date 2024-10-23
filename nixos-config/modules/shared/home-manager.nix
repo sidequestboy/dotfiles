@@ -73,7 +73,7 @@ let name = "Jamie Macdonald";
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
       # source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      # source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
       bindkey '^R' history-incremental-search-backward
       bindkey -M isearch '^S' history-incremental-search-forward
@@ -103,7 +103,7 @@ let name = "Jamie Macdonald";
         editor = "nvim";
         autocrlf = "input";
       };
-      commit.gpgsign = true;
+      commit.gpgsign = false;
       pull.rebase = true;
       rebase.autoStash = true;
     };
@@ -119,19 +119,6 @@ let name = "Jamie Macdonald";
         "/Users/${user}/.ssh/config_external"
       )
     ];
-    matchBlocks = {
-      "github.com" = {
-        identitiesOnly = true;
-        identityFile = [
-          (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-            "/home/${user}/.ssh/id_github"
-          )
-          (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-            "/Users/${user}/.ssh/id_github"
-          )
-        ];
-      };
-    };
   };
 
   tmux = {
