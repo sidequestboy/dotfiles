@@ -64,6 +64,7 @@ return {
       pyright = {},
       eslint = {},
       tailwindcss = {},
+      ts_ls = {},
       cssls = {
         css = {
           lint = {

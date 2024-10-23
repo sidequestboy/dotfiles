@@ -42,6 +42,7 @@ with pkgs; [
   nodePackages.prettier
   nodejs
   typescript
+  nodePackages.typescript-language-server
 
   # Text and terminal utilities
   # htop
