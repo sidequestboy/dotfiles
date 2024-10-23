@@ -55,7 +55,7 @@ let user = "jamie"; in
     defaults = {
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
-        AppleShowAllExtensions = true;
+        AppleShowAllExtensions = false;
         ApplePressAndHoldEnabled = false;
 
         # 120, 90, 60, 30, 12, 6, 2

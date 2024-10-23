@@ -1,12 +1,18 @@
-{ pkgs, config, ... }:
+{ user, pkgs, config, lib, ... }:
 
-# let
-#  githubPublicKey = "ssh-ed25519 AAAA...";
-# in
+let
+ home = config.users.users.${user}.home;
+ xdg_configHome = "${config.users.users.${user}.home}/.config";
+in
 {
-
-  # ".ssh/id_github.pub" = {
-  #   text = githubPublicKey;
+  # "${xdg_configHome}/nvim" = {
+  #   text = builtins.readFile ./config/nvim;
   # };
+
+  # "${xdg_configHome}/nvim" = {
+  #   source = lib.file.mkOutOfStoreSymlink ${home}/dots/config/nvim;
+  #   target = "nvim";
+  # };
+  # ...
 
 }

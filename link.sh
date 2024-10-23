@@ -13,15 +13,8 @@ do_not_link=(\
 )
 
 macos_files=(\
-  "config/nix"\
   "config/nvim"\
-  "config/alacritty"\
-  "gitconfig"\
-  "local/lib/tmux"\
-  "secrets.zsh"\
-  "tmux.conf"\
-  "zshrc"\
-  "zprofile"\
+  "local/lib/tmux/renumber-sessions.sh"\
 )
 
 element_in ()

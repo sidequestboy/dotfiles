@@ -5,8 +5,11 @@ let shared-packages = import ../shared/packages.nix { inherit pkgs; }; in
 shared-packages ++ [
   arc-browser
   # dockutil
-  karabiner-elements
+  dbeaver-bin
+  gimp
+  # karabiner-elements
   kitty
+  monitorcontrol
   obsidian
   slack
   spotify

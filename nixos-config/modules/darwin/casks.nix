@@ -16,9 +16,11 @@ _:
   "bitwarden"
   "nordvpn"
   "scroll-reverser"
+  "transmission"
 
   # Entertainment Tools
   "vlc"
+  "bitwig-studio"
 
   # Productivity Tools
   "todoist"

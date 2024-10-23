@@ -62,7 +62,6 @@ return {
       -- rust_analyzer = {},
       pylsp = {},
       pyright = {},
-      tsserver = {},
       eslint = {},
       tailwindcss = {},
       cssls = {

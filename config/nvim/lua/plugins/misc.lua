@@ -89,8 +89,8 @@ return {
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    dir = '~/my/code/others/nvim-plugins/lualine.nvim',
-    dev = false,
+    -- dir = '~/my/code/others/nvim-plugins/lualine.nvim',
+    -- dev = false,
     priority = 999,
     dependencies = { 'folke/noice.nvim' },
     -- See `:help lualine.txt`

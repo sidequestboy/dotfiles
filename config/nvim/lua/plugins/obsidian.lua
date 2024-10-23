@@ -31,6 +31,7 @@ return {
   },
   {
     'oflisback/obsidian-bridge.nvim',
+    enabled = false,
     opts = {
       vault_path = vault_path,
       obsidian_server_address = 'http://localhost:27123',

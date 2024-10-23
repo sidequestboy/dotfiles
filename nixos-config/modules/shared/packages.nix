@@ -48,6 +48,7 @@ with pkgs; [
   # hunspell
   # iftop
   # jetbrains-mono
+  gh
   jq
   neovim
   ripgrep
