@@ -24,6 +24,10 @@ let name = "Jamie Macdonald";
       path=("$HOME/.local/share/bin" $path)
       export PATH
 
+      # macos specific - put in darwin config TODO
+      export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+      export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
+
       export EDITOR="nvim"
       export FZF_DEFAULT_COMMAND="rg --hidden --files"
       export LC_CTYPE="en_US.UTF-8"

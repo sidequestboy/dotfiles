@@ -1,3 +1,4 @@
 - get fonts in nix (Fira Code Retina, Operator Mono Light Italic)
 - get neovim in nix
 - get kitty in nix
+- install openssl via homebrew I guess!

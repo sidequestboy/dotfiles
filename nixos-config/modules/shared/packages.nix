@@ -24,8 +24,8 @@ with pkgs; [
   # libfido2
 
   # Cloud-related tools and SDKs
-  # docker
-  # docker-compose
+  docker
+  docker-compose
 
   # Media-related packages
   # dejavu_fonts
@@ -43,6 +43,7 @@ with pkgs; [
   nodejs
   typescript
   nodePackages.typescript-language-server
+  postgresql
 
   # Text and terminal utilities
   # htop
