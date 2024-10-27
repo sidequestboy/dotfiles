@@ -9,6 +9,7 @@ _:
   "discord"
   #"notion"
   #"slack"
+  "obs"
   "whatsapp"
   "zoom"
 
