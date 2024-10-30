@@ -53,6 +53,15 @@ return {
       nmap('<leader>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, '[W]orkspace [L]ist Folders')
+
+      -- https://github.com/neovim/nvim-lspconfig/issues/725
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        pattern = { "*.js", "*.ts" },
+        callback = function(ctx)
+          -- Here use ctx.match instead of ctx.file
+          client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+        end,
+      })
     end
 
     local servers = {
@@ -72,6 +81,7 @@ return {
           },
         },
       },
+      svelte = {},
       -- html = { filetypes = { 'html', 'twig', 'hbs'} },
       -- emmet_ls = {
       --   filetypes = { 'css', 'html', 'javascript', 'javascriptreact', 'less', 'sass', 'scss', 'svelte', 'pug', 'typescriptreact', 'vue' },
