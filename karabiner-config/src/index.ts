@@ -109,5 +109,10 @@ writeToProfile("TS Config", [
     is_keyboard: true,
     vendor_id: 9639,
     product_id: 64008,
+  }),
+  mmoMouseRule({
+    is_keyboard: true,
+    vendor_id: 9639,
+    product_id: 64007,
   })
 ]);
