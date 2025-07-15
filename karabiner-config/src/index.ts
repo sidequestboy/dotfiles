@@ -4,6 +4,7 @@ import {
   writeToProfile,
   ifInputSource,
   ModifierParam,
+  ToKeyParam,
   simlayer,
   layer,
   duoLayer,
@@ -11,6 +12,7 @@ import {
   withModifier,
   ifVar,
   ifDevice,
+  DeviceIdentifier,
 } from "karabiner.ts";
 
 // only remap when command is involved
@@ -69,6 +71,27 @@ const keymap = modifierCombos
   ])
   .flat();
 
+const mmoMouseRule = (deviceSpecs: DeviceIdentifier) => {
+  return rule(`Remap MMO mouse keys - ${deviceSpecs.product_id}`)
+    .manipulators([
+      map(1).to("mute" as ToKeyParam),
+      map(2).to("volume_decrement" as ToKeyParam),
+      map(3).to("volume_increment" as ToKeyParam),
+      map(4).to("rewind" as ToKeyParam),
+      map(5).to("play_or_pause" as ToKeyParam),
+      map(6).to("fastforward" as ToKeyParam),
+      map(7).to("display_brightness_decrement" as ToKeyParam),
+      map(8).to("mission_control" as ToKeyParam),
+      map(9).to("display_brightness_increment" as ToKeyParam),
+      // map(0).to("mute" as ToKeyParam),
+      // map("+").to("mute" as ToKeyParam),
+      // map("-").to("mute" as ToKeyParam),
+    ])
+    .condition(
+      ifDevice(deviceSpecs)
+    )
+}
+
 writeToProfile("TS Config", [
   rule(
     "Map dvorak keys to qwerty when cmd is held",
@@ -77,26 +100,14 @@ writeToProfile("TS Config", [
   rule("Map caps to control, escape if alone.").manipulators([
     map("caps_lock").to("left_control").toIfAlone("escape"),
   ]),
-  rule("Remap MMO mouse keys")
-    .manipulators([
-      map(1).to("mute"),
-      map(2).to("volume_decrement"),
-      map(3).to("volume_increment"),
-      map(4).to("rewind"),
-      map(5).to("play_or_pause"),
-      map(6).to("fastforward"),
-      map(7).to("display_brightness_decrement"),
-      map(8).to("mission_control"),
-      map(9).to("display_brightness_increment"),
-      // map(0).to(0),
-      // map("+").to("+"),
-      // map("-").to("-"),
-    ])
-    .condition(
-      ifDevice({
-        is_keyboard: true,
-        vendor_id: 1241,
-        product_id: 64088,
-      })
-    ),
+  mmoMouseRule({
+    is_keyboard: true,
+    vendor_id: 1241,
+    product_id: 64088,
+  }),
+  mmoMouseRule({
+    is_keyboard: true,
+    vendor_id: 9639,
+    product_id: 64008,
+  })
 ]);
