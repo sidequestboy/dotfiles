@@ -8,9 +8,10 @@ shared-packages ++ [
   dbeaver-bin
   gimp
   # karabiner-elements
-  kitty
+  # kitty
   monitorcontrol
   obsidian
+  postman
   slack
   spotify
   zsh-autosuggestions
