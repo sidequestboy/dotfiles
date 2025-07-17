@@ -11,7 +11,7 @@ let name = "Jamie Macdonald";
     cdpath = [ "~/.local/share/src" ];
     plugins = [
     ];
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
@@ -23,6 +23,8 @@ let name = "Jamie Macdonald";
       path=("$HOME/.cargo/bin" $path)
       path=("$HOME/.local/share/bin" $path)
       export PATH
+
+      eval "$(zellij setup --generate-auto-start zsh)"
 
       # macos specific - put in darwin config TODO
       export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"

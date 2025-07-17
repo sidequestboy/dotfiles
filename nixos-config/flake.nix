@@ -1,12 +1,12 @@
 {
   description = "Nix config for macos and nixos in the future";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
     agenix.url = "github:ryantm/agenix";
     mac-app-util.url = "github:hraban/mac-app-util";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
-      url = "github:LnL7/nix-darwin/master";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
@@ -33,7 +33,7 @@
       flake = false;
     };
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, mac-app-util, nixpkgs, disko, agenix, secrets } @inputs:
+  outputs = inputs@{ self, darwin, nix-darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, mac-app-util, nixpkgs, disko, agenix, secrets }:
     let
       user = "jamie";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];

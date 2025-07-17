@@ -61,6 +61,6 @@ with pkgs; [
   # zsh-powerlevel10k
 
   # Python packages
-  python39
-  python39Packages.virtualenv # globally install virtualenv
+  python3Full
+  virtualenv # globally install virtualenv
 ]

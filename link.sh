@@ -15,6 +15,7 @@ do_not_link=(\
 macos_files=(\
   "config/nvim"\
   "config/kitty"\
+  "config/zellij"\
   "local/lib/tmux/renumber-sessions.sh"\
 )
 

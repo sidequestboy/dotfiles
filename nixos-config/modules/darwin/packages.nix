@@ -14,5 +14,6 @@ shared-packages ++ [
   postman
   slack
   spotify
+  zellij
   zsh-autosuggestions
 ]

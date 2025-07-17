@@ -2,7 +2,7 @@ _:
 
 [
   # Development Tools
-  "homebrew/cask/docker"
+  # "homebrew/cask/docker"
   "visual-studio-code"
   "kitty"
 
@@ -23,9 +23,6 @@ _:
   # Entertainment Tools
   "vlc"
   "bitwig-studio"
-
-  # Productivity Tools
-  "todoist"
 
   # Browsers
   "google-chrome"
