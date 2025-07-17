@@ -20,6 +20,7 @@ return {
       'graphql',
       'html',
       'javascript',
+      'kdl',
       'lua',
       'nix',
       'php',
