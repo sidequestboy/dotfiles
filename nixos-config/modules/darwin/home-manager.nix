@@ -69,7 +69,7 @@ in
         { path = "${pkgs.slack}/Applications/Slack.app/"; }
         { path = "/System/Applications/Messages.app/"; }
         { path = "/System/Applications/Facetime.app/"; }
-        { path = "${pkgs.kitty}/Applications/kitty.app/"; }
+        { path = "/System/Applications/kitty.app/"; }
         { path = "${pkgs.obsidian}/Applications/Obsidian.app"; }
         { path = "/System/Applications/Calendar.app"; }
       ];
