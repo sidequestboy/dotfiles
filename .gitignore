@@ -2,4 +2,4 @@ packer_compiled.lua
 config/alacritty/catppuccin
 secrets.zsh
 .DS_Store
-nixos_config/result/
+nixos-config/result
