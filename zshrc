@@ -13,7 +13,6 @@ export EDITOR="nvim"
 export FZF_DEFAULT_COMMAND="rg --hidden --files"
 export LC_CTYPE="en_US.UTF-8"
 export LESS="-R --mouse --wheel-lines=3"
-export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
 export TERMINAL="alacritty"
 export NPM_PACKAGES="$HOME/.npm-packages"
 
@@ -50,7 +49,7 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bindkey '^R' history-incremental-search-backward
 bindkey -M isearch '^S' history-incremental-search-forward

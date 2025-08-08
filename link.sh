@@ -15,8 +15,11 @@ do_not_link=(\
 macos_files=(\
   "config/nvim"\
   "config/kitty"\
+  "config/ghostty"\
   "config/zellij"\
+  "gitconfig"\
   "local/lib/tmux/renumber-sessions.sh"\
+  "zshrc"\
 )
 
 element_in ()
@@ -83,7 +86,7 @@ create_link()
   fi
     
   # now make the link if we answered yes to all the above checks.
-  echo "making link."
+  echo "Making link: \"${link_location}\" -> \"${file_abspath}\""
   ln -s "${file_abspath}" "${link_location}"
 }
 

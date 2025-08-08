@@ -127,6 +127,15 @@ return {
         }
       end,
     }
+    require('lspconfig').sourcekit.setup {
+      capabilities = {
+        workspace = {
+            didChangeWatchedFiles = {
+                dynamicRegistration = true,
+            },
+        },
+    },
+    }
 
     -- Auto-formatting:
 
