@@ -15,8 +15,6 @@ _:
   "zoom"
 
   # Utility Tools
-  "bitwarden"
-  "nordvpn"
   "scroll-reverser"
   "transmission"
 

@@ -19,7 +19,7 @@ in
   };
 
   homebrew = {
-    enable = true;
+    enable = false;
     casks = pkgs.callPackage ./casks.nix {};
     onActivation.cleanup = "uninstall";
 

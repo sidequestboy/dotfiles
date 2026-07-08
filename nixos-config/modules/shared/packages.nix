@@ -52,7 +52,7 @@ with pkgs; [
   # jetbrains-mono
   gh
   jq
-  neovim
+  # neovim
   ripgrep
   tree
   tmux

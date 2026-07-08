@@ -27,7 +27,7 @@ require('lazy').setup('plugins', {
   install = {
     colorscheme = { 'catppuccin' },
   },
-  dev = { path = '~/my/code/others/nvim-plugins' },
+  dev = { path = '~/my/code/nvim-plugins' },
   -- checker = { enabled = true },
   performance = {
     rtp = {
@@ -45,5 +45,6 @@ require('lazy').setup('plugins', {
     },
   },
 })
+require 'config.filetypes'
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -16,9 +16,12 @@ macos_files=(\
   "config/nvim"\
   "config/kitty"\
   "config/ghostty"\
+  "config/yabai"\
+  "config/skhd"\
   "config/zellij"\
   "gitconfig"\
   "local/lib/tmux/renumber-sessions.sh"\
+  "local/share/kitty"\
   "zshrc"\
 )
 

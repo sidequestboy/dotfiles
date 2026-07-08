@@ -64,25 +64,6 @@ return {
   },
 
   {
-    'pwntester/octo.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    opts = {
-      default_merge_method = 'rebase',
-      default_to_projects_v2 = true,
-      suppress_missing_scope = {
-        projects_v2 = true,
-      },
-    },
-    config = function(_, opts)
-      require('octo').setup(opts)
-    end,
-  },
-
-  {
     'sindrets/diffview.nvim',
   },
 
