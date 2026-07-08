@@ -1,0 +1,44 @@
+# open terminal, blazingly fast compared to iTerm/Hyper
+alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+
+# change window focus within space
+alt - j : /opt/homebrew/bin/yabai -m window --focus south
+alt - k : /opt/homebrew/bin/yabai -m window --focus north
+alt - h : /opt/homebrew/bin/yabai -m window --focus west
+alt - l : /opt/homebrew/bin/yabai -m window --focus east
+
+alt + shift - l : /opt/homebrew/bin/yabai -m window --swap east
+alt + shift - h : /opt/homebrew/bin/yabai -m window --swap west
+alt + shift - j : /opt/homebrew/bin/yabai -m window --swap south
+alt + shift - k : /opt/homebrew/bin/yabai -m window --swap north
+
+alt - 1 : /opt/homebrew/bin/yabai -m space 1 --focus 1;
+alt - 2 : /opt/homebrew/bin/yabai -m space 2 --focus 2;
+alt - 3 : /opt/homebrew/bin/yabai -m space 3 --focus 3;
+alt - 4 : /opt/homebrew/bin/yabai -m space 4 --focus 4;
+alt - 5 : /opt/homebrew/bin/yabai -m space 5 --focus 5;
+alt - 6 : /opt/homebrew/bin/yabai -m space 6 --focus 6;
+alt - 7 : /opt/homebrew/bin/yabai -m space 7 --focus 7;
+
+shift + alt - 1 : /opt/homebrew/bin/yabai -m window --space 1;
+shift + alt - 2 : /opt/homebrew/bin/yabai -m window --space 2;
+shift + alt - 3 : /opt/homebrew/bin/yabai -m window --space 3;
+shift + alt - 4 : /opt/homebrew/bin/yabai -m window --space 4;
+shift + alt - 5 : /opt/homebrew/bin/yabai -m window --space 5;
+shift + alt - 6 : /opt/homebrew/bin/yabai -m window --space 6;
+shift + alt - 7 : /opt/homebrew/bin/yabai -m window --space 7;
+
+alt - u : /opt/homebrew/bin/yabai -m window --toggle float --grid 4:4:1:1:2:2
+alt - f : /opt/homebrew/bin/yabai -m space --layout float
+alt - t : /opt/homebrew/bin/yabai -m space --layout bsp
+alt - s : /opt/homebrew/bin/yabai -m space --layout stack
+alt - z : /opt/homebrew/bin/yabai -m window --toggle zoom-fullscreen
+
+alt - n : /opt/homebrew/bin/yabai -m window --focus stack.next 2> /dev/null || /opt/homebrew/bin/yabai -m window --focus stack.first
+alt - p : /opt/homebrew/bin/yabai -m window --focus stack.prev 2> /dev/null || /opt/homebrew/bin/yabai -m window --focus stack.last
+
+# stop/start/restart /opt/homebrew/bin/yabai
+ctrl + alt - q : /opt/homebrew/bin/yabai --stop-service
+ctrl + alt - s : /opt/homebrew/bin/yabai --start-service
+ctrl + alt - r : /opt/homebrew/bin/yabai --restart-service
+ctrl + alt - k : /opt/homebrew/bin/skhd --restart-service

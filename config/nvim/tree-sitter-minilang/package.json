@@ -1,0 +1,10 @@
+{
+  "name": "tree-sitter-minilang",
+  "version": "0.1.0",
+  "main": "bindings/node",
+  "description": "Tree-sitter grammar for the Strudel Minilang DSL",
+  "license": "MIT",
+  "author": "Jamie Macdonald",
+  "repository": "https://github.com/sidequestboy/tree-sitter-minilang"
+}
+

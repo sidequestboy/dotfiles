@@ -1,0 +1,33 @@
+yabai -m signal --add event=dock_did_restart action="sudo -S yabai --load-sa"
+sudo -S /opt/homebrew/bin/yabai --load-sa
+
+yabai -m config                              \
+    debug_output              on             \
+    window_placement          second_child   \
+    layout                    bsp            \
+    top_padding               4              \
+    bottom_padding            4              \
+    left_padding              5              \
+    right_padding             5              \
+    window_gap                5              \
+#    mouse_follows_focus       on             \
+    window_origin_display     focused        \
+    window_zoom_persist       on             \
+#    focus_follows_mouse       autofocus      \
+    mouse_modifier            alt            \
+    mouse_action1             move            \
+    window_animation_duration 0.2            \
+    window_animation_easing   ease_out_expo  \
+#    window_opacity            on             \
+#    window_opacity_duration   0.07           \
+#    active_window_opacity     1.0            \
+#    normal_window_opacity     0.90           \
+    mouse_action1             move           \
+    mouse_action2             resize         \
+    mouse_drop_action         swap
+
+yabai -m rule --add app=".*" sub-layer=normal
+yabai -m rule --add app=".*" manage=off
+yabai -m rule --add app="^Zen$" title!="^Extension: .*$" subrole="kAXStandardWindowSubrole" manage=on
+yabai -m rule --add app="^kitty$" manage=on
+

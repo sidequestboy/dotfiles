@@ -1,0 +1,2 @@
+cd ~/dots
+launch --hold --title "dots" zsh -c "/opt/homebrew/bin/nvim"

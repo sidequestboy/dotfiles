@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "minilang",
+      "camelcase": "Minilang",
+      "title": "Minilang",
+      "scope": "source.minilang",
+      "file-types": [
+        "minilang"
+      ],
+      "injection-regex": "^minilang$",
+      "class-name": "TreeSitterMinilang"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "mini music pattern language",
+    "authors": [
+      {
+        "name": "Jamie Macdonald",
+        "email": "jamie.alban@gmail.com",
+        "url": "https://sidequestboy.com/"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/sidequestboy/tree-sitter-minilang"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
