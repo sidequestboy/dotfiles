@@ -8,8 +8,8 @@ return {
   after = 'catppuccin',
   priority = 998,
   config = function()
-    local error_sign = vim.fn.sign_getdefined('DiagnosticSignError')[1].text or '󰅚'
-    local warning_sign = vim.fn.sign_getdefined('DiagnosticSignWarn')[1].text or '󰀪'
+    local error_sign = '󰅚'
+    local warning_sign = '󰀪'
     local palette = require('catppuccin.palettes').get_palette 'mocha'
 
     local opts = {

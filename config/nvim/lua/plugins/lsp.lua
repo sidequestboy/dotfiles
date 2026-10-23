@@ -9,7 +9,7 @@ return {
 
     -- Useful status updates for LSP
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+    { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     {
@@ -55,11 +55,11 @@ return {
       end, '[W]orkspace [L]ist Folders')
 
       -- https://github.com/neovim/nvim-lspconfig/issues/725
-      vim.api.nvim_create_autocmd("BufWritePost", {
-        pattern = { "*.js", "*.ts" },
+      vim.api.nvim_create_autocmd('BufWritePost', {
+        pattern = { '*.js', '*.ts' },
         callback = function(ctx)
           -- Here use ctx.match instead of ctx.file
-          client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+          client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.match })
         end,
       })
     end
@@ -97,6 +97,9 @@ return {
 
       lua_ls = {
         Lua = {
+          diagnostics = {
+            globals = { 'vim' },
+          },
           workspace = { checkThirdParty = false },
           telemetry = { enable = false },
         },
@@ -113,28 +116,14 @@ return {
       ensure_installed = vim.tbl_keys(servers),
     }
 
-    mason_lspconfig.setup_handlers {
-      function(server_name)
-        require('lspconfig')[server_name].setup {
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = servers[server_name],
-          filetypes = (servers[server_name] or {}).filetypes,
-          -- doesn't work WHY??
-          -- handlers = {
-          --   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { silent = true, border = "single", title = server_name }),
-          -- },
-        }
-      end,
-    }
     require('lspconfig').sourcekit.setup {
       capabilities = {
         workspace = {
-            didChangeWatchedFiles = {
-                dynamicRegistration = true,
-            },
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
         },
-    },
+      },
     }
 
     -- Auto-formatting:
@@ -181,9 +170,9 @@ return {
           return
         end
 
-        if client.name == 'lua_ls' then
-          return
-        end
+        -- if client.name == 'lua_ls' then
+        --   return
+        -- end
 
         -- Create an autocmd that will run *before* we save the buffer.
         --  Run the formatting command for the LSP that has just attached.

@@ -6,6 +6,20 @@ vim.diagnostic.config {
       min = vim.diagnostic.severity.INFO,
     },
   },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󰅚',
+      [vim.diagnostic.severity.WARN] = '󰀪',
+      [vim.diagnostic.severity.INFO] = '󰋽',
+      [vim.diagnostic.severity.HINT] = '󰌶',
+    },
+    linehl = {
+      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+    },
+    numhl = {
+      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+    },
+  },
   -- underline = {
   --   severity = {
   --     min = vim.diagnostic.severity.INFO
@@ -18,9 +32,3 @@ P = function(input)
   return print(vim.inspect(input))
 end
 
-vim.cmd [[
-  sign define DiagnosticSignError text=󰅚 texthl=DiagnosticSignError linehl= numhl=
-  sign define DiagnosticSignWarn text=󰀪 texthl=DiagnosticSignWarn linehl= numhl=
-  sign define DiagnosticSignInfo text=󰋽 texthl=DiagnosticSignInfo linehl= numhl=
-  sign define DiagnosticSignHint text=󰌶 texthl=DiagnosticSignHint linehl= numhl=
-]]

@@ -4,6 +4,9 @@ return {
   dependencies = {
     {
       'jdrupal-dev/css-vars.nvim',
+    enabled = function ()
+      return vim.fn.executable('rg') == 1
+    end,
       opts = {
         -- If you use CSS-in-JS, you can add the autocompletion to JS/TS files.
         cmp_filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },

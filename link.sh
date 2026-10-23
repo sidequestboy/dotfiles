@@ -22,6 +22,7 @@ macos_files=(\
   "gitconfig"\
   "local/lib/tmux/renumber-sessions.sh"\
   "local/share/kitty"\
+  "tmux.conf"\
   "zshrc"\
 )
 

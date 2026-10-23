@@ -56,11 +56,36 @@ return {
         untracked = { text = '│' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>gph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+        vim.keymap.set('n', '<leader>gph', require('gitsigns').preview_hunk,
+          { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
     },
+  },
+
+  {
+    'pwntester/octo.nvim',
+    enabled = function()
+      return vim.fn.executable 'gh' == 1
+    end,
+
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    opts = {
+      default_merge_method = 'rebase',
+      default_to_projects_v2 = true,
+      suppress_missing_scope = {
+        projects_v2 = true,
+      },
+    },
+    config = function(_, opts)
+      require('octo').setup(opts)
+    end,
   },
 
   {
@@ -153,7 +178,7 @@ return {
       end, { desc = 'make [O]nly window' })
     end,
   },
-  { 'echasnovski/mini.ai', version = '*' },
+  { 'echasnovski/mini.ai',  version = '*' },
   {
     'stephenway/postcss.vim',
   },
