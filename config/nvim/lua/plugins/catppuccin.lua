@@ -24,6 +24,7 @@ return {
       treesitter = true,
       which_key = true,
     },
+    transparent_background = true,
   },
   config = function(_, opts)
     require('catppuccin').setup(opts)
@@ -32,5 +33,9 @@ return {
     vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextError', { italic = true, fg = '#f38ba8' })
     vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextHint', { italic = true, fg = '#94e2d5' })
     vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextInfo', { italic = true, fg = '#89dceb' })
+
+    if vim.g.neovide then
+      vim.api.nvim_set_hl(0, 'Normal', { bg = '#1e1e2e' })
+    end
   end,
 }
