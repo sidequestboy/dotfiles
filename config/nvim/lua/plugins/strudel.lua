@@ -1,9 +1,9 @@
 return {
-  "gruvw/strudel.nvim",
-  dev = true,
-  build = "npm install",
+  'gruvw/strudel.nvim',
+  dev = false,
+  build = 'npm install',
   config = function()
-    require("strudel").setup({
+    require('strudel').setup {
       -- Strudel web user interface related options
       ui = {
         -- Maximise the menu panel
@@ -41,20 +41,19 @@ return {
       headless = true,
       -- Path to the directory where Strudel browser user data (cookies, sessions, etc.) is stored
       -- (optional, default: `~/.cache/strudel-nvim/`)
-      browser_data_dir = "/Users/jamie/.cache/strudel-nvim/",
+      browser_data_dir = '/Users/jamie/.cache/strudel-nvim/',
       -- Absolute path to a (chromium based) browser executable of choice
       -- (optional, default: nil)
       -- browser_exec_path = "/absolute/path/to/browser/executable",
-    })
-    local strudel = require("strudel")
+    }
+    local strudel = require 'strudel'
 
-    vim.keymap.set("n", "<leader>sl", strudel.launch, { desc = "Launch Strudel" })
-    vim.keymap.set("n", "<leader>sq", strudel.quit, { desc = "Quit Strudel" })
-    vim.keymap.set("n", "<leader>st", strudel.toggle, { desc = "Strudel Toggle Play/Stop" })
-    vim.keymap.set("n", "<leader>su", strudel.update, { desc = "Strudel Update" })
-    vim.keymap.set("n", "<leader>ss", strudel.stop, { desc = "Strudel Stop Playback" })
-    vim.keymap.set("n", "<leader>sb", strudel.set_buffer, { desc = "Strudel set current buffer" })
-    vim.keymap.set("n", "<leader>sx", strudel.execute, { desc = "Strudel set current buffer and update" })
-
+    vim.keymap.set('n', '<leader>sl', strudel.launch, { desc = 'Launch Strudel' })
+    vim.keymap.set('n', '<leader>sq', strudel.quit, { desc = 'Quit Strudel' })
+    vim.keymap.set('n', '<leader>st', strudel.toggle, { desc = 'Strudel Toggle Play/Stop' })
+    vim.keymap.set('n', '<leader>su', strudel.update, { desc = 'Strudel Update' })
+    vim.keymap.set('n', '<leader>ss', strudel.stop, { desc = 'Strudel Stop Playback' })
+    vim.keymap.set('n', '<leader>sb', strudel.set_buffer, { desc = 'Strudel set current buffer' })
+    vim.keymap.set('n', '<leader>sx', strudel.execute, { desc = 'Strudel set current buffer and update' })
   end,
 }
