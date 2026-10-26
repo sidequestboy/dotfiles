@@ -59,14 +59,35 @@ vim.o.listchars = 'tab:>-'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+
+local function osc52_copy(lines, _)
+  local text = table.concat(lines, '\n')
+  local encoded = vim.base64.encode(text)
+  local tty = vim.fn.system('tmux display -p "#{client_tty}"'):gsub('%s+', '')
+  if tty ~= '' then
+    local fd = io.open(tty, 'w')
+    if fd then
+      fd:write(string.format('\027]52;c;%s\027\\', encoded))
+      fd:close()
+    end
+  end
+end
+
 vim.g.clipboard = {
   name = 'OSC 52',
   copy = {
-    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
-    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+    ['+'] = osc52_copy,
+    ['*'] = osc52_copy,
   },
   paste = {
-    ['+'] = require('vim.ui.clipboard.osc52').paste '+',
-    ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+    ['+'] = function()
+      return { vim.fn.split(vim.fn.getreg '', '\n'), vim.fn.getregtype '' }
+    end,
+    ['*'] = function()
+      return { vim.fn.split(vim.fn.getreg '', '\n'), vim.fn.getregtype '' }
+    end,
   },
 }
